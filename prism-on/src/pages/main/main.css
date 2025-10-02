@@ -1,0 +1,37 @@
+.pg-main {
+}
+
+.pg-main .main-cover {
+  width: 100%;
+  height: 100dvh;
+  min-height: 934px;
+  background-size: cover;
+  background-position: center bottom;
+  background-image: url('/images/main-cover.png');
+}
+
+.pg-main .main-cover .cover-phrase {
+  padding-top: 22%;
+}
+
+.pg-main .main-cover .cover-phrase .phrase-text {
+  line-height: 1;
+  font-family: var(--dongle), sans-serif;
+  font-size: 44px;
+}
+
+.pg-main .main-cover .cover-phrase .phrase-description {
+  margin-top: 75px;
+  font-size: 28px;
+}
+
+.pg-main .main-introduce {
+  padding: 210px 0 190px;
+}
+
+.pg-main .main-introduce .introduce-title {
+  font-size: 38px;
+  font-weight: 900;
+  text-align: center;
+  color: var(--primary);
+}

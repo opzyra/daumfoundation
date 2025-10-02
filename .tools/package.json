@@ -1,0 +1,22 @@
+{
+  "name": "tools",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "hygen": "node hygen.js",
+    "service": "orval --config ./orval.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^5.2.1",
+    "chalk": "^4.1.2",
+    "enquirer": "^2.3.6",
+    "hygen": "^6.2.11",
+    "orval": "^7.9.0",
+    "prettier": "^3.4.2"
+  }
+}

@@ -1,0 +1,9 @@
+/* radix */
+[data-radix-popper-content-wrapper] {
+  z-index: 15 !important;
+}
+
+/* sonner */
+[data-sonner-toast] {
+  border-radius: var(--radius) !important;
+}

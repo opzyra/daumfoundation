@@ -1,0 +1,184 @@
+.sh-upload-image {
+}
+
+.sh-upload-image .image-list .image-button {
+  width: 100%;
+}
+
+.sh-upload-image .image-list .ant-upload-list {
+  display: none;
+}
+
+.sh-upload-image .image-list .image-item {
+  margin-top: 4px;
+  width: 50%;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+}
+
+.sh-upload-image .image-list .image-item .item-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sh-upload-image .image-list .image-item .image-clear {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.sh-upload-image .image-list .image-item .item-image img {
+  width: 40px;
+}
+
+.sh-upload-image .image-thumbnail .image-box {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gray-3);
+  border-radius: 4px;
+  cursor: pointer;
+  border: 1px solid var(--gray-5);
+  overflow: hidden;
+  transition: border-color 0.25s ease;
+}
+
+.sh-upload-image .image-thumbnail .image-box.open,
+.sh-upload-image .image-thumbnail .image-box:hover {
+  border-color: var(--primary);
+}
+
+.sh-upload-image .image-thumbnail .image-box.error {
+  border-color: var(--error);
+}
+
+.sh-upload-image .image-thumbnail .image-box > .ant-upload-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.sh-upload-image .image-thumbnail .image-box > .ant-upload-wrapper .ant-upload-select {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.sh-upload-image .image-thumbnail .image-box > .ant-upload-wrapper .ant-upload-list {
+  display: none;
+}
+
+.sh-upload-image .image-container {
+  overflow: hidden;
+  border-radius: 4px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.sh-upload-image .image-container img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+.sh-upload-image .image-thumbnail .image-box.open .image-container .image-hover,
+.sh-upload-image .image-thumbnail .image-container:hover .image-hover {
+  visibility: visible;
+  opacity: 1;
+}
+
+.sh-upload-image .image-thumbnail .image-hover {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  background: rgba(240, 240, 240, 0.2);
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.sh-upload-image .image-thumbnail .image-clear {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  font-weight: 500;
+  border: 1px solid var(--primary);
+  background: var(--white);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.sh-upload-image .image-thumbnail .image-empty {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-weight: 500;
+}
+
+.sh-upload-image .image-thumbnail .image-description {
+  font-size: 13px;
+  margin-top: 2px;
+  color: var(--gray-7);
+}
+
+.sh-upload-files {
+  width: 100%;
+}
+
+.sh-upload-files .ant-upload-wrapper .ant-upload-list {
+  display: block;
+}
+
+.sh-upload-files .ant-upload-wrapper .ant-upload-select {
+  width: 100%;
+}
+
+.sh-upload-files .ant-upload-wrapper .ant-upload-list .ant-upload-list-item {
+  height: 28px;
+}
+
+.sh-upload-files .ant-upload-wrapper .ant-upload-list .ant-upload-list-item .ant-upload-list-item-name {
+  padding: 0 4px;
+  color: var(--text);
+}
+
+.sh-upload-files .ant-upload-wrapper .ant-upload-list .ant-upload-list-item .ant-upload-list-item-actions .ant-upload-list-item-action {
+  opacity: 1;
+}
+
+.sh-upload-files .ant-upload-wrapper .ant-upload-list .ant-btn {
+  display: flex;
+  height: 28px !important;
+}
+
+.sh-upload-files .ant-upload-wrapper .ant-upload-list .ant-btn:hover {
+  background: transparent;
+}
+
+.sh-upload-files .ant-upload-wrapper .ant-upload-list .ant-btn:hover svg {
+  color: var(--error);
+}

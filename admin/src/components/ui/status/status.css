@@ -1,0 +1,87 @@
+@keyframes pulse-primary {
+  0% {
+    box-shadow: 0 0 0 0 rgb(from var(--primary) r g b / 0.32);
+  }
+
+  to {
+    box-shadow: 0 0 0 0.3em transparent;
+  }
+}
+
+@keyframes pulse-success {
+  0% {
+    box-shadow: 0 0 0 0 rgb(from var(--success) r g b / 0.32);
+  }
+
+  to {
+    box-shadow: 0 0 0 0.3em transparent;
+  }
+}
+
+@keyframes pulse-error {
+  0% {
+    box-shadow: 0 0 0 0 rgb(from var(--error) r g b / 0.32);
+  }
+
+  to {
+    box-shadow: 0 0 0 0.3em transparent;
+  }
+}
+
+.ui-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ui-status .status-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ui-status.success {
+  color: var(--success);
+}
+
+.ui-status.warn {
+  color: var(--warning);
+}
+
+.ui-status.success .status-text {
+  color: var(--black);
+}
+
+.ui-status.error {
+  color: var(--error);
+}
+
+.ui-status.new {
+  color: var(--info);
+}
+
+.ui-status .status-pulse {
+  display: inline-block;
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 50%;
+  background: var(--gray-8);
+}
+
+.ui-status .status-pulse.primary {
+  background: var(--primary);
+  animation: pulse-primary 2s infinite;
+}
+
+.ui-status .status-pulse.success {
+  background: var(--success);
+  animation: pulse-success 2s infinite;
+}
+
+.ui-status .status-pulse.error {
+  background: var(--error);
+  animation: pulse-error 2s infinite;
+}
+
+.ui-status .status-text {
+}

@@ -1,0 +1,27 @@
+.sh-page {
+}
+
+.sh-page .page-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 38px;
+}
+
+.sh-page .page-head .head-title {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.sh-page .page-head .head-action {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sh-page .page-head .head-action .action-item {
+}
+
+.sh-page .page-body {
+  margin-top: 18px;
+}

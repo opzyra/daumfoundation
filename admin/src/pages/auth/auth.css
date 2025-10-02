@@ -1,0 +1,87 @@
+.pg-auth {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pg-auth .auth-box {
+  width: 340px;
+}
+
+.pg-auth .auth-box .auth-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pg-auth .auth-box .auth-form {
+  margin-top: 36px;
+}
+
+.pg-auth .auth-box .auth-form .form-item {
+}
+
+.pg-auth .auth-box .auth-form .form-item + .form-item {
+  margin-top: 16px;
+}
+
+.pg-auth .auth-box .auth-form .form-item .form-label {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.pg-auth .auth-box .auth-form .form-item .form-label .label-action {
+  font-size: 11px;
+  color: var(--primary);
+  cursor: pointer;
+}
+
+.pg-auth .auth-box .auth-form .form-item .form-label .label-text {
+  color: #89a0b3;
+}
+
+.pg-auth .auth-box .auth-form .form-item .form-label .label-action {
+}
+
+.pg-auth .auth-box .auth-form .form-item .form-control {
+  margin-top: 6px;
+}
+
+.pg-auth .auth-box .auth-form .form-option {
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pg-auth .auth-box .auth-form .form-option .option-item {
+}
+
+.pg-auth .auth-box .auth-form .form-action {
+  margin-top: 28px;
+}
+
+.pg-auth .auth-box .auth-corp {
+  margin-top: 16px;
+  font-size: 12px;
+  text-align: center;
+  color: #999999;
+}
+
+.auth-repass-popover {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.auth-repass-popover svg {
+  color: var(--primary);
+}
+
+.auth-repass-popover span {
+  font-size: 12px;
+  line-height: 1;
+}

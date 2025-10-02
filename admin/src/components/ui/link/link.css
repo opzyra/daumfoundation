@@ -1,0 +1,55 @@
+.ui-link {
+  display: inline-block;
+  color: inherit;
+}
+
+.ui-link.icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ui-link:not(.outline).primary {
+  color: var(--primary);
+}
+
+.ui-link:not(.outline).error {
+  color: var(--error);
+}
+
+.ui-link.outline.primary:hover {
+  color: var(--primary);
+}
+
+.ui-link.end {
+  flex-direction: row-reverse;
+}
+
+.ui-link:hover.underline .link-text::before {
+  opacity: 1;
+}
+
+.ui-link:hover .link-text {
+  opacity: 0.8;
+}
+
+.ui-link .link-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ui-link .link-text {
+  position: relative;
+  color: inherit;
+}
+
+.ui-link .link-text::before {
+  opacity: 0;
+  content: '';
+  position: absolute;
+  bottom: 1px;
+  width: 100%;
+  height: 1px;
+  background: var(--primary);
+}

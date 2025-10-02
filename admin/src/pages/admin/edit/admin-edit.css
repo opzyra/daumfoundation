@@ -1,0 +1,12 @@
+.pg-admin-edit {
+}
+
+.admin-password-alert .copy {
+  margin-top: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gray-3);
+  padding: 8px 20px;
+  border-radius: var(--radius);
+}

@@ -1,0 +1,256 @@
+.sh-source {
+}
+
+.sh-source .source-meta {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 30px;
+}
+
+.sh-source .source-meta .meta-data {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.sh-source .source-meta .meta-data .data-total {
+}
+
+.sh-source .source-meta .meta-data .data-page {
+  position: relative;
+}
+
+.sh-source .source-meta .meta-data .data-page::before {
+  position: absolute;
+  content: '';
+  top: 50%;
+  left: -9px;
+  transform: translateY(-50%);
+  background: var(--gray-8);
+  width: 1px;
+  height: 60%;
+}
+
+.sh-source .source-meta .meta-action {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sh-source .source-meta .meta-action a {
+  line-height: 1;
+}
+
+.sh-source .source-meta .meta-action > .ant-btn {
+  min-width: 80px;
+}
+
+.sh-source .source-meta .meta-action .action-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+
+  border-radius: var(--radius);
+  cursor: pointer;
+  min-width: 30px;
+  height: 30px;
+}
+
+.sh-source .source-meta .meta-action .action-item:hover {
+  background: var(--gray-3);
+}
+
+.sh-source .source-meta .meta-action .action-item .action-label {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.sh-source .source-meta .meta-action .action-item.text {
+  font-weight: 500;
+  line-height: 1;
+  padding: 0 8px;
+}
+
+.sh-source .source-meta .meta-action .action-item .action-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+}
+
+.sh-source .source-meta .meta-action .action-item .action-control {
+  display: flex;
+  align-items: center;
+  width: 118px;
+}
+
+.sh-source .source-meta .meta-action .action-item .action-control .ant-select {
+  height: 30px !important;
+  padding: 0 4px;
+}
+
+.sh-source .source-meta .meta-action .action-item .action-control .ant-select .ant-select-selector {
+  border: none;
+  padding-right: 0;
+  padding-left: 4px;
+  background: transparent !important;
+}
+
+.sh-source .source-meta .meta-action .action-item .action-control .ant-select-single .ant-select-arrow {
+  inset-inline-end: 0;
+}
+
+.sh-source .source-meta .meta-action .action-item .action-control .ant-select .ant-select-selector span::before {
+  right: 0;
+}
+
+.sh-source .source-meta .meta-action .action-item .action-control .ant-select .ant-select-selector .ant-select-selection-item {
+  line-height: 1;
+  font-size: 14px;
+}
+
+.sh-source .source-meta .meta-action .action-item .action-control .ant-select .ant-select-selection-search-input {
+  height: 30px;
+}
+
+.sh-source .source-meta .meta-action .action-item .action-control .ant-select-single.ant-select-show-arrow .ant-select-selection-item,
+.sh-source .source-meta .meta-action .action-item .action-control .ant-select-single .ant-select-selector .ant-select-selection-search {
+  padding-inline-end: 0;
+}
+
+.sh-source .source-list {
+  margin-top: 6px;
+}
+
+.sh-source .source-list .ant-table-wrapper .ant-table-row {
+  background: var(--white);
+}
+
+.sh-source .source-list .ant-table-wrapper .ant-table-thead > tr > th {
+  padding: 12px 8px;
+}
+
+.sh-source .source-list .ant-table-wrapper .ant-table-tbody > tr > td {
+  padding: 16px 8px;
+}
+
+.sh-source .source-list .ant-table-wrapper .ant-table-thead > tr > th::before {
+  display: none;
+}
+
+.sh-source .source-list .ant-table-wrapper .ant-table-tbody .ant-table-row.ant-table-row-selected > .ant-table-cell {
+  background: transparent;
+}
+
+.sh-source .source-list .ant-table-wrapper .ant-table-tbody > tr.ant-table-placeholder .ant-table-cell {
+  border-bottom: none;
+}
+
+.sh-source .source-list .ant-table-wrapper .ant-table-row-indent + .ant-table-row-expand-icon {
+  margin: 0;
+}
+
+.sh-source .source-list .ant-table-wrapper .ant-table-tbody > tr.ant-table-placeholder {
+  z-index: 10 !important;
+}
+
+.sh-source .source-list .ant-table-expanded-row .ant-table-cell {
+  background: var(--white);
+}
+
+.sh-source .source-list .list-spin {
+  padding: 60px 0;
+}
+
+.sh-source .source-list .list-empty {
+  padding: 60px 0;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--black);
+}
+
+.sh-source .source-list .list-expand {
+  cursor: pointer;
+}
+
+.sh-source .source-list .list-expand:hover {
+  color: var(--primary);
+}
+
+.sh-source .source-pagination {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sh-source .source-priority {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sh-source .source-action {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 20px;
+  gap: 8px;
+}
+
+.sh-source-sort-dropdown {
+  min-width: 140px;
+  padding: 8px;
+  background-color: var(--white);
+  border: 1px solid #e0e6eb;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.sh-source-sort-dropdown .ant-radio-group {
+  width: 100%;
+}
+
+.sh-source-sort-dropdown .dropdown-section + .dropdown-section {
+  border-top: 1px solid #e0e6eb;
+  margin-top: 6px;
+  padding-top: 6px;
+}
+
+.sh-source-sort-dropdown .dropdown-item .ant-radio-wrapper,
+.sh-source-sort-dropdown .dropdown-item .dropdown-button {
+  width: 100%;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  padding: 8px;
+  font-size: 14px;
+
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.sh-source-sort-dropdown .dropdown-item .ant-radio-wrapper .ant-radio-label {
+  padding-inline-start: 0;
+}
+
+.sh-source-sort-dropdown .dropdown-item .dropdown-button .dropdown-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sh-source-sort-dropdown .dropdown-item .dropdown-button.active {
+  color: var(--primary);
+  font-weight: 500;
+  background: var(--gray-3);
+}
+
+.sh-source-sort-dropdown .dropdown-item .ant-radio-wrapper:hover,
+.sh-source-sort-dropdown .dropdown-item .dropdown-button:hover {
+  background: var(--gray-3);
+}

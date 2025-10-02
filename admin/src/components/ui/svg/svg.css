@@ -1,0 +1,17 @@
+.ui-svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ui-svg.pointer {
+  cursor: pointer;
+}
+
+.ui-svg.primary:hover {
+  color: var(--primary);
+}
+
+.ui-svg.error {
+  color: var(--error);
+}

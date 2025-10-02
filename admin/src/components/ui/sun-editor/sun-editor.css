@@ -1,0 +1,157 @@
+.ui-editor {
+  height: 100%;
+  width: 100%;
+}
+
+.ui-editor .sun-editor {
+  border: none;
+  background: var(--white);
+}
+
+.ui-editor .sun-editor .se-toolbar {
+  padding: 0 calc((100% - 860px) / 2);
+  margin: 0 auto;
+  background: none;
+  outline: none;
+  border-bottom: 1px solid var(--gray-4);
+}
+
+.ui-editor .sun-editor .se-toolbar.se-toolbar-sticky {
+  background: var(--white);
+}
+
+.ui-editor .sun-editor .se-btn-module-border {
+  border: none;
+}
+
+.ui-editor .sun-editor .se-btn-tray {
+  padding: 6px 0 0;
+}
+
+.ui-editor .sun-editor .se-btn {
+  width: 28px;
+  height: 28px;
+}
+
+.ui-editor .sun-editor .se-svg,
+.ui-editor .sun-editor button > svg {
+  width: 13px;
+  height: 13px;
+}
+
+.ui-editor .sun-editor .se-menu-tray {
+  left: calc((100% - 864px) / 2);
+}
+
+.ui-editor .sun-editor .se-wrapper .se-wrapper-wysiwyg {
+  padding: 12px calc((100% - 850px) / 2);
+}
+
+.ui-editor .sun-editor .se-toolbar-separator-vertical {
+  display: inline-block;
+  height: 18px;
+  width: 1px;
+  vertical-align: top;
+  background: var(--gray-6);
+  margin-top: 6px;
+}
+
+.ui-editor .sun-editor .se-wrapper .se-wrapper-code {
+  padding: 12px calc((100% - 850px) / 2);
+  background: none;
+  color: var(--black);
+  border: none;
+  border-radius: 0;
+}
+
+.ui-editor .sun-editor .se-btn-primary {
+  color: var(--white);
+  border-color: var(--primary);
+  background: var(--primary);
+  text-shadow: 0 -1px 0 rgb(0 0 0 / 12%);
+  box-shadow: 0 2px 0 rgb(0 0 0 / 5%);
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.ui-editor .sun-editor .se-btn-primary:focus,
+.ui-editor .sun-editor .se-btn-primary:hover {
+  color: var(--white);
+  opacity: 0.8;
+}
+
+.ui-editor .sun-editor .se-dialog .se-btn {
+  width: 34px;
+  height: 34px;
+}
+
+.ui-editor .sun-editor .se-btn-select.se-btn-tool-size {
+  width: 78px;
+}
+
+.ui-editor .sun-editor .se-dialog .se-dialog-close {
+  margin-top: 6px !important;
+  width: 28px;
+  height: 28px;
+}
+
+.ui-editor .sun-editor .se-dialog input {
+  appearance: auto;
+}
+
+.ui-editor .sun-editor ._se_color_picker_remove {
+  width: 32px;
+  height: 32px;
+}
+
+.ui-editor .sun-editor .se-dialog .se-dialog-inner .se-dialog-footer {
+  padding: 10px 15px 0 4px;
+}
+
+.ui-editor .sun-editor .se-resizing-bar {
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+.ui-editor .sun-editor .se-dialog .se-dialog-back {
+  z-index: 20;
+}
+
+.ui-editor .sun-editor .se-dialog .se-dialog-inner {
+  z-index: 21;
+}
+
+/* inline */
+.ui-editor.inline .sun-editor {
+  border: 1px solid var(--gray-5);
+  border-radius: var(--radius);
+}
+
+.ui-editor.inline .sun-editor .se-toolbar {
+  padding: 0;
+}
+
+.ui-editor.inline .sun-editor .se-btn-tray {
+  padding: 4px 3px 0;
+}
+
+.ui-editor.inline .sun-editor .se-menu-tray {
+  left: initial;
+}
+
+.ui-editor.inline .sun-editor .se-wrapper .se-wrapper-wysiwyg {
+  padding: 4px 11px;
+}
+
+.ui-editor.inline .sun-editor .se-wrapper .se-wrapper-code {
+  padding: 12px;
+}
+
+/* inline + focused */
+.ui-editor.inline.focused .sun-editor {
+  border-color: var(--primary);
+}
+
+/* error */
+.ui-editor.error .sun-editor {
+  border-color: var(--error);
+}

@@ -1,0 +1,38 @@
+.app-layout {
+  width: 100%;
+}
+
+.app-layout .layout-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 168px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 110px 0 140px;
+  background: #ffffff;
+  box-shadow: 0 4px 10px #0000001a;
+}
+
+.app-layout .layout-header .header-nav {
+  display: flex;
+  align-items: center;
+  gap: 114px;
+}
+
+.app-layout .layout-header .header-nav .nav-item {
+  padding: 12px;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: var(--paperlogy), sans-serif;
+  cursor: pointer;
+}
+
+.app-layout .layout-header .header-nav .nav-item:hover {
+  color: var(--primary);
+}
+
+.app-layout .layout-main {
+}

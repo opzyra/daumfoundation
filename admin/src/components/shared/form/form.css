@@ -1,0 +1,175 @@
+.sh-form {
+}
+
+.sh-form.detail .form-control {
+  padding-top: 8px;
+}
+
+.sh-form.vertical .form-item {
+  flex-direction: column;
+}
+
+.sh-form.vertical .form-content {
+  width: 100%;
+}
+
+.sh-form.borderless .form-label {
+  padding: 0;
+  margin-bottom: 4px;
+}
+
+.sh-form.borderless .form-item {
+  border: none;
+  padding: 0;
+}
+
+.sh-form.borderless .form-item + .form-item {
+  margin-top: 8px;
+}
+
+.sh-form.borderless .form-message {
+  margin-top: 0;
+  position: absolute;
+  top: 4px;
+  right: 0;
+  font-size: 11px;
+}
+
+.sh-form.block .form-item {
+  flex-direction: column;
+}
+
+.sh-form .form-section:not(:first-of-type) {
+  margin-top: 60px;
+}
+
+.sh-form .form-section.borderless .form-head {
+  border-bottom: none;
+}
+
+.sh-form .form-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 12px;
+}
+
+.sh-form .form-head-title {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.sh-form .form-head-action {
+}
+
+.sh-form .form-body {
+}
+
+.sh-form .form-row {
+  display: flex;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 20px 0;
+}
+
+.sh-form .form-row > .form-item {
+  flex: 1;
+  border-bottom: none;
+  padding: 0;
+}
+
+.sh-form .form-row > .form-item + .form-item {
+  margin-left: 60px;
+}
+
+.sh-form .form-item {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  width: 100%;
+  min-height: 40px;
+  font-size: 14px;
+  line-height: 24px;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 20px 0;
+}
+
+.sh-form .form-item.borderless {
+  border: none;
+}
+
+.sh-form .form-label {
+  display: flex;
+  flex: 0 0 auto;
+  align-self: flex-start;
+  width: 184px;
+  font-weight: 500;
+  padding: 8px 10px 8px 0;
+}
+
+.sh-form .form-label-text {
+}
+
+.sh-form .form-label-edit {
+  margin-left: 3px;
+  cursor: pointer;
+}
+
+.sh-form .form-label-edit:hover {
+  color: var(--primary);
+}
+
+.sh-form .form-label-required {
+  color: var(--error);
+  margin-left: 3px;
+}
+
+.sh-form .form-content {
+  flex-grow: 1;
+  width: 100%;
+}
+
+.sh-form .form-control {
+  width: 100%;
+  height: 100%;
+  min-height: 38px;
+}
+
+.sh-form .form-control.center {
+  display: flex;
+  align-items: center;
+}
+
+.sh-form .form-message {
+  margin-top: 6px;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.sh-form .form-message-info {
+  color: var(--gray-7);
+}
+
+.sh-form .form-message-error {
+  color: var(--error);
+}
+
+.sh-form .form-message-error .error-item + .error-item {
+  margin-top: 2px;
+}
+
+.sh-form .form-action {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 20px;
+  gap: 8px;
+}
+
+.sh-form .form-action.center {
+  justify-content: center;
+}
+
+.sh-form .form-action > .ant-btn {
+  min-width: 82px;
+}

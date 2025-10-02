@@ -1,0 +1,15 @@
+{
+  "root": true,
+  "env": {
+    "node": true,
+    "es6": true,
+    "browser": true
+  },
+  "extends": ["plugin:react/recommended", "next", "prettier"],
+  "plugins": ["prettier"],
+  "rules": {
+    "react/display-name": "off",
+    "jsx-a11y/alt-text": "off"
+  },
+  "ignorePatterns": ["src/service/**"]
+}

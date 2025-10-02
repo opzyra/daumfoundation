@@ -1,0 +1,7 @@
+import type { ProductDto } from './productDto';
+
+/**
+ * 제품
+ * @nullable
+ */
+export type RentalAdminParamProduct = ProductDto | null;

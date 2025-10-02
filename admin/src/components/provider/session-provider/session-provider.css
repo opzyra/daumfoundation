@@ -1,0 +1,65 @@
+.session-anonymous-modal {
+  padding: 25px;
+}
+
+.session-anonymous-modal-container {
+}
+
+.session-anonymous-modal .modal-head {
+}
+
+.session-anonymous-modal .modal-head .head-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.session-anonymous-modal .modal-head .head-icon .icon-round {
+  width: 70px;
+  height: 70px;
+  background: #e7f1fe;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.session-anonymous-modal .modal-head .head-text {
+  margin-top: 15px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: center;
+}
+
+.session-anonymous-modal .modal-content {
+  margin-top: 20px;
+}
+
+.session-anonymous-modal .modal-content .content-item {
+  padding-left: 12px;
+  position: relative;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.session-anonymous-modal .modal-content .content-item::before {
+  content: '';
+  position: absolute;
+  top: 9px;
+  left: 0;
+  border-radius: 50%;
+  width: 4px;
+  height: 4px;
+  background: var(--black);
+}
+
+.session-anonymous-modal .modal-content .content-item span {
+  margin-top: 4px;
+  color: #89a0b3;
+  font-size: 12px;
+}
+
+.session-anonymous-modal .modal-action {
+  margin-top: 30px;
+}

@@ -1,0 +1,19 @@
+.pg-article {
+}
+
+.pg-article .article-source {
+}
+
+.pg-article .article-source .source-subject {
+  display: inline-block;
+}
+
+.pg-article .article-source .source-subject .subject-text {
+  display: inline-block;
+}
+
+.pg-article .article-source .source-subject .subject-icon {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 2px;
+}

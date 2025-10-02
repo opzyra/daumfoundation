@@ -1,0 +1,44 @@
+.ui-html {
+  overflow-y: auto;
+}
+
+.ui-html .se-video-container figure {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+  margin: 0;
+}
+
+.ui-html .se-video-container iframe,
+.ui-html .se-video-container object,
+.ui-html .se-video-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.ui-html .se-component img {
+  max-width: 100%;
+}
+
+.ui-html.border {
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--gray-5);
+  padding: 4px 11px;
+  border-radius: var(--radius);
+  transition: all 0.2s;
+}
+
+.ui-html.border:hover {
+  border-color: #212121;
+}
+
+.ui-html.readonly {
+  background: var(--gray-3);
+  cursor: default;
+}
