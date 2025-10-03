@@ -131,6 +131,18 @@ export const dongle = localFont({
   preload: true,
 });
 
+export const inklipquid = localFont({
+  src: [
+    {
+      path: '../../../../public/fonts/InkLipquid/InkLipquid.woff',
+      weight: '400',
+      style: 'normal',
+    },
+  ],
+  display: 'swap',
+  preload: true,
+});
+
 export const fontFamily = pretendard.style.fontFamily;
 
 interface FontProviderProps {
@@ -145,6 +157,7 @@ export function FontProvider({ children }: FontProviderProps) {
           --pretendard: ${pretendard.style.fontFamily};
           --paperlogy: ${paperlogy.style.fontFamily};
           --dongle: ${dongle.style.fontFamily};
+          --inklipquid: ${inklipquid.style.fontFamily};
         }
       `}</style>
       {children}

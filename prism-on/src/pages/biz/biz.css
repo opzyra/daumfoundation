@@ -1,0 +1,162 @@
+.pg-biz {
+  width: 100%;
+  background-image: url('/images/page-cover.png');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 100%;
+}
+
+.pg-biz .biz-contents {
+  padding: 102px 0 86px;
+}
+
+.pg-biz .biz-contents .contents-label {
+  text-align: center;
+  font-size: 46px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.pg-biz .biz-contents .contents-title {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+}
+
+.pg-biz .biz-contents .contents-title .title-content {
+  font-family: var(--inklipquid), sans-serif;
+  font-size: 60px;
+}
+
+.pg-biz .biz-contents .contents-description {
+  margin-top: 42px;
+  font-size: 25px;
+  line-height: 40px;
+  text-align: center;
+}
+
+.pg-biz .biz-contents .contents-detail {
+  margin-top: 120px;
+  display: flex;
+  gap: 55px;
+}
+
+.pg-biz .biz-contents .contents-detail .detail-item {
+  padding: 70px 24px;
+  text-align: center;
+  border-radius: 50px;
+  width: 50%;
+  flex: 1;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+.pg-biz .biz-contents .contents-detail .detail-item:nth-of-type(1) {
+  background-image: url('/images/biz-detail_foot.png');
+}
+
+.pg-biz .biz-contents .contents-detail .detail-item:nth-of-type(2) {
+  background-image: url('/images/biz-detail_coaching.png');
+}
+
+.pg-biz .biz-contents .contents-detail .detail-item .detail-title {
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 30px;
+}
+
+.pg-biz .biz-contents .contents-detail .detail-item .detail-content {
+  margin-top: 26px;
+  font-size: 23px;
+  line-height: 38px;
+}
+
+.pg-biz .biz-startup {
+  padding: 112px 0;
+}
+
+.pg-biz .biz-startup .startup-title {
+  font-size: 46px;
+  font-weight: 900;
+  line-height: 55px;
+  text-align: center;
+}
+
+.pg-biz .biz-startup .startup-description {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 25px;
+}
+
+.pg-biz .biz-startup .startup-list {
+  margin-top: 100px;
+  display: flex;
+  align-items: center;
+  gap: 44px;
+}
+
+.pg-biz .biz-startup .startup-list .startup-item {
+  border-radius: 50px;
+  background: #fafafa;
+  box-shadow: 0px 0px 4px #00000029;
+  border: 1px solid #cecece;
+  padding: 98px 0;
+  flex: 1;
+}
+
+.pg-biz .biz-startup .startup-list .startup-item .startup-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pg-biz .biz-startup .startup-list .startup-item .startup-text {
+  margin-top: 60px;
+  text-align: center;
+  font-size: 23px;
+  line-height: 38px;
+}
+
+.pg-biz .biz-partner {
+  padding: 112px 0 200px;
+}
+
+.pg-biz .biz-partner .partner-title {
+  font-size: 46px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.pg-biz .biz-partner .partner-description {
+  margin-top: 20px;
+  font-size: 25px;
+  text-align: center;
+}
+
+.pg-biz .biz-partner .partner-list {
+  margin-top: 60px;
+}
+
+.pg-biz .biz-partner .partner-list .partner-flex {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -9px -27px;
+}
+
+.pg-biz .biz-partner .partner-list .partner-item {
+  border: 1px solid #a0a0a0;
+  margin: 9px 27px;
+  width: calc(25% - 54px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 102px;
+  padding: 0 20px;
+}
+
+.pg-biz .biz-partner .partner-list .partner-item img {
+  max-width: 100%;
+}

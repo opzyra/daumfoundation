@@ -1,0 +1,27 @@
+.ui-button-more {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  border: 1px solid #707070;
+  border-radius: 38px;
+  background: #ffffff;
+}
+
+.ui-button-more .more-text {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.ui-button-more .more-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: var(--primary);
+  border-radius: 50%;
+  color: #ffffff;
+  font-size: 18px;
+}

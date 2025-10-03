@@ -2,6 +2,8 @@ import React from 'react';
 
 import Link from 'next/link';
 
+import Container from 'src/components/shared/container/container';
+
 import './app-layout.css';
 
 type GnbProps = 'main' | 'intro' | 'biz' | 'news';
@@ -76,13 +78,59 @@ export function AppLayout({ children }: AppLayoutProps) {
           </svg>
         </Link>
         <div className="header-nav">
-          <div className="nav-item">소개</div>
-          <div className="nav-item">주요 사업</div>
-          <div className="nav-item">소식</div>
+          <Link className="nav-item" href="/intro">
+            소개
+          </Link>
+          <Link className="nav-item" href="/biz">
+            주요 사업
+          </Link>
+          <Link className="nav-item" href="/news">
+            소식
+          </Link>
         </div>
       </header>
       <main className="layout-main">{children}</main>
-      <footer className="layout-footer"></footer>
+      <footer className="layout-footer">
+        <Container>
+          <div className="footer-container">
+            <div className="footer-meta">
+              <div className="meta-row">
+                <div className="meta-label">문의</div>
+                <div className="meta-text">
+                  다음세대재단 양인아 프로젝트 매니저
+                </div>
+              </div>
+              <div className="meta-row">
+                <div className="meta-label">E.</div>
+                <div className="meta-text">yangina@daumfoundation.org</div>
+              </div>
+              <div className="meta-row">
+                <div className="meta-label">T.</div>
+                <div className="meta-text">02-2135-7290</div>
+              </div>
+            </div>
+            <div className="footer-brand">
+              <a
+                href="https://www.yegangfoundation.org/"
+                target="_blank"
+                className="brand-item"
+              >
+                <img
+                  src="/images/logo-yegangfoundation.png"
+                  alt="예강희망키움재단"
+                />
+              </a>
+              <a
+                href="https://www.daumfoundation.org/"
+                target="_blank"
+                className="brand-item"
+              >
+                <img src="/images/logo-daumfoundation.png" alt="다음세대재단" />
+              </a>
+            </div>
+          </div>
+        </Container>
+      </footer>
     </div>
   );
 }

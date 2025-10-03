@@ -1,0 +1,94 @@
+.pg-intro {
+  width: 100%;
+  background-size: cover;
+  background-position: center top;
+  background-image: url('/images/intro-cover.png');
+  padding-top: 135px;
+}
+
+.pg-intro .intro-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pg-intro .intro-logo .logo-phrase {
+  text-align: left;
+  font-family: var(--dongle), sans-serif;
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.pg-intro .intro-description {
+  text-align: center;
+  margin-top: 44px;
+  font-size: 26px;
+  line-height: 40px;
+}
+
+.pg-intro .intro-host {
+  margin-top: 152px;
+}
+
+.pg-intro .intro-host .host-list {
+  display: flex;
+  align-items: center;
+  gap: 44px;
+}
+
+.pg-intro .intro-host .host-list .host-item {
+  flex: 1;
+  width: 50%;
+  padding: 64px 0;
+  text-align: center;
+  position: relative;
+  border-radius: 50px;
+  z-index: 1;
+  height: 495px;
+}
+
+.pg-intro .intro-host .host-list .host-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 20px #00000029;
+  opacity: 0.6;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.pg-intro .intro-host .host-list .host-item .host-text {
+  margin-top: 42px;
+  font-size: 23px;
+  line-height: 38px;
+}
+
+.pg-intro .intro-host .host-list .host-item .host-text .blank {
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 76px;
+}
+
+.pg-intro .intro-value {
+  margin-top: 328px;
+  text-align: center;
+  padding-bottom: 280px;
+}
+
+.pg-intro .intro-value .value-title {
+  font-family: var(--dongle), sans-serif;
+  font-size: 70px;
+  line-height: 1;
+}
+
+.pg-intro .intro-value .value-text {
+  margin-top: 36px;
+  font-size: 25px;
+  line-height: 40px;
+}

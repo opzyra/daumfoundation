@@ -1,0 +1,72 @@
+.pg-news {
+  width: 100%;
+  background-image: url('/images/page-cover.png');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 100%;
+  padding-top: 102px;
+}
+
+.pg-news .news-head {
+}
+
+.pg-news .news-head .head-title {
+  font-size: 46px;
+  font-weight: 900;
+  text-align: center;
+  line-height: 1;
+}
+
+.pg-news .news-head .head-description {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 25px;
+}
+
+.pg-news .news-contents {
+  margin-top: 174px;
+  padding-bottom: 186px;
+}
+
+.pg-news .news-contents .news-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -34px -16px;
+}
+
+.pg-news .news-contents .news-list .news-item {
+  border-radius: 20px;
+  width: calc(33.333% - 32px);
+  margin: 34px 16px;
+  cursor: pointer;
+}
+
+.pg-news .news-contents .news-list .news-item .thumbnail {
+  border-radius: 20px 20px 0 0;
+  font-size: 0;
+}
+
+.pg-news .news-contents .news-list .news-item .thumbnail img {
+  width: 100%;
+}
+
+.pg-news .news-contents .news-list .news-item .content {
+  border: 1px solid #cacaca;
+  border-radius: 0 0 20px 20px;
+
+  padding: 32px 28px;
+}
+
+.pg-news .news-contents .news-list .news-item .content .content-title {
+  font-size: 20px;
+  font-weight: 500;
+  height: 60px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.pg-news .news-contents .news-list .news-item .content .content-date {
+  margin-top: 30px;
+}
