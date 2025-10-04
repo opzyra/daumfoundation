@@ -1,28 +1,13 @@
 import React from 'react';
 
-import { useRouter } from 'next/router';
-
 import './button-more.css';
 
-interface ButtonMoreProps {
-  route?: string;
-  text?: string;
-}
+interface ButtonMoreProps {}
 
-function ButtonMore({ route, text = '자세히 보기' }: ButtonMoreProps) {
-  const router = useRouter();
-
+function ButtonMore({}: ButtonMoreProps) {
   return (
-    <button
-      className="ui-button-more"
-      onClick={async () => {
-        if (route) {
-          await router.push(route);
-          return;
-        }
-      }}
-    >
-      <div className="more-text">{text}</div>
+    <button className="ui-button-more">
+      <div className="more-text">자세히 보기</div>
       <div className="more-arrow">
         <svg
           xmlns="http://www.w3.org/2000/svg"

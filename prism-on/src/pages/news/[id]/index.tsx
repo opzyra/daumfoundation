@@ -1,6 +1,7 @@
 import { ReactElement } from 'react';
 
 import { GetServerSideProps } from 'next';
+import Link from 'next/link';
 
 import { QueryClient, dehydrate } from '@tanstack/react-query';
 
@@ -134,7 +135,9 @@ function NewsDetail(props: NewsDetailProps) {
             </div>
           </div>
           <div className="detail-action">
-            <button className="action-button">목록으로 이동</button>
+            <Link href="/news">
+              <button className="action-button">목록으로 이동</button>
+            </Link>
           </div>
         </Container>
       </div>

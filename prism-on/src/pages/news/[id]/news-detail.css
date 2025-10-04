@@ -104,4 +104,9 @@
   border: 1px solid #707070;
   border-radius: 38px;
   letter-spacing: -0.4px;
+  transition: all 0.5s ease;
+}
+
+.pg-news-detail .detail-action .action-button:hover {
+  box-shadow: 0 0 12px rgba(18, 31, 131, 0.2);
 }

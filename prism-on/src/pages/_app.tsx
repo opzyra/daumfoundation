@@ -9,8 +9,6 @@ import { useRouter } from 'next/router';
 
 import { Hydrate, QueryClientProvider } from '@tanstack/react-query';
 import { ConfigProvider as AntdConfigProvider } from 'antd';
-import { ConfigProvider as AntdMobileConfigProvider } from 'antd-mobile';
-import AntdMobileKoKR from 'antd-mobile/es/locales/ko-KR';
 import koKR from 'antd/locale/ko_KR';
 import dayjs from 'dayjs';
 import 'dayjs/locale/ko';
@@ -67,52 +65,49 @@ function App({ Component, pageProps }: AppProps) {
               disabled: true,
             }}
           >
-            <AntdMobileConfigProvider locale={AntdMobileKoKR}>
-              <Head>
-                <meta charSet="UTF-8" />
-                <meta
-                  name="viewport"
-                  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover"
-                />
-                <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-                <meta
-                  name="format-detection"
-                  content="telephone=no, address=no, email=no"
-                />
-
-                <title>{metadata.title}</title>
-                <link rel="shortcut icon" href={`/favicon.ico`} />
-              </Head>
-              <NextSeo
-                canonical={process.env.NEXT_PUBLIC_URL_DOMAIN + router.asPath}
-                description={metadata.description}
-                additionalMetaTags={[
-                  {
-                    name: 'keywords',
-                    content: metadata.keywords,
-                  },
-                ]}
-                openGraph={{
-                  title: metadata.title,
-                  url: process.env.NEXT_PUBLIC_URL_DOMAIN + router.asPath,
-                  images: [
-                    {
-                      url:
-                        process.env.NEXT_PUBLIC_URL_DOMAIN + `/opengraph.png`,
-                    },
-                  ],
-                }}
+            <Head>
+              <meta charSet="UTF-8" />
+              <meta
+                name="viewport"
+                content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover"
+              />
+              <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+              <meta
+                name="format-detection"
+                content="telephone=no, address=no, email=no"
               />
 
-              <SessionProvider>
-                <FontProvider>
-                  <AppProvider>
-                    {getProvider(<Component {...pageProps} />)}
-                  </AppProvider>
-                </FontProvider>
-                <Toaster />
-              </SessionProvider>
-            </AntdMobileConfigProvider>
+              <title>{metadata.title}</title>
+              <link rel="shortcut icon" href={`/favicon.ico`} />
+            </Head>
+            <NextSeo
+              canonical={process.env.NEXT_PUBLIC_URL_DOMAIN + router.asPath}
+              description={metadata.description}
+              additionalMetaTags={[
+                {
+                  name: 'keywords',
+                  content: metadata.keywords,
+                },
+              ]}
+              openGraph={{
+                title: metadata.title,
+                url: process.env.NEXT_PUBLIC_URL_DOMAIN + router.asPath,
+                images: [
+                  {
+                    url: process.env.NEXT_PUBLIC_URL_DOMAIN + `/opengraph.png`,
+                  },
+                ],
+              }}
+            />
+
+            <SessionProvider>
+              <FontProvider>
+                <AppProvider>
+                  {getProvider(<Component {...pageProps} />)}
+                </AppProvider>
+              </FontProvider>
+              <Toaster />
+            </SessionProvider>
           </AntdConfigProvider>
         </CookiesProvider>
       </Hydrate>

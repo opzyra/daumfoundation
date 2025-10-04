@@ -20,6 +20,85 @@
   line-height: 1;
 }
 
+.pg-intro .intro-logo .logo-image {
+  width: 605px;
+  position: relative;
+}
+
+.pg-intro .intro-logo .logo-image .logo-path {
+}
+
+.pg-intro .intro-logo .logo-image .logo-path .path-item {
+  position: absolute;
+  top: 0;
+  width: 8px;
+  height: 30px;
+  background: #ef820c;
+  border-radius: 25px;
+}
+
+.pg-intro .intro-logo .logo-image .logo-path .path-item:nth-of-type(1) {
+  transform: rotate(-45deg) scale(0);
+  top: 10px;
+  right: 72px;
+  transform-origin: bottom center;
+}
+
+.pg-intro .intro-logo .logo-image .logo-path .path-item:nth-of-type(2) {
+  right: 48px;
+  transform: scale(0);
+  transform-origin: bottom center;
+}
+
+.pg-intro .intro-logo .logo-image .logo-path .path-item:nth-of-type(3) {
+  right: 22px;
+  top: 8px;
+  transform: rotate(45deg) scale(0);
+  transform-origin: bottom center;
+}
+
+@keyframes path-item-1 {
+  0% {
+    transform: rotate(-45deg) scale(0);
+  }
+  100% {
+    transform: rotate(-45deg) scale(1);
+  }
+}
+
+.pg-intro .intro-logo .logo-image .logo-path.animate .path-item:nth-of-type(1) {
+  animation: path-item-1 0.4s ease forwards;
+  animation-delay: 0.2s;
+}
+
+@keyframes path-item-2 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pg-intro .intro-logo .logo-image .logo-path.animate .path-item:nth-of-type(2) {
+  animation: path-item-2 0.4s ease forwards;
+  animation-delay: 0.3s;
+}
+
+@keyframes path-item-3 {
+  0% {
+    transform: rotate(45deg) scale(0);
+  }
+  100% {
+    transform: rotate(45deg) scale(1);
+  }
+}
+
+.pg-intro .intro-logo .logo-image .logo-path.animate .path-item:nth-of-type(3) {
+  animation: path-item-3 0.4s ease forwards;
+  animation-delay: 0.4s;
+}
+
 .pg-intro .intro-description {
   text-align: center;
   margin-top: 44px;

@@ -6,6 +6,11 @@
   border: 1px solid #707070;
   border-radius: 38px;
   background: #ffffff;
+  transition: all 0.5s ease;
+}
+
+.ui-button-more:hover {
+  box-shadow: 0 0 12px rgba(18, 31, 131, 0.2);
 }
 
 .ui-button-more .more-text {
@@ -24,4 +29,9 @@
   border-radius: 50%;
   color: #ffffff;
   font-size: 18px;
+  transition: transform 0.35s ease-in-out;
+}
+
+.ui-button-more:hover .more-arrow {
+  transform: translateX(1px);
 }

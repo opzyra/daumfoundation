@@ -1,6 +1,10 @@
 import React from 'react';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+
+import cn from 'classnames';
+import { motion } from 'framer-motion';
 
 import Container from 'src/components/shared/container/container';
 
@@ -17,7 +21,8 @@ interface AppLayoutProps {
   children: React.ReactNode;
 }
 
-export function AppLayout({ children }: AppLayoutProps) {
+export function AppLayout({ metadata, children }: AppLayoutProps) {
+  const pathname = usePathname();
   return (
     <div className="app-layout">
       <header className="layout-header">
@@ -78,18 +83,39 @@ export function AppLayout({ children }: AppLayoutProps) {
           </svg>
         </Link>
         <div className="header-nav">
-          <Link className="nav-item" href="/intro">
+          <Link
+            className={cn('nav-item', { active: metadata?.gnb === 'intro' })}
+            href="/intro"
+          >
             소개
           </Link>
-          <Link className="nav-item" href="/biz">
+          <Link
+            className={cn('nav-item', { active: metadata?.gnb === 'biz' })}
+            href="/biz"
+          >
             주요 사업
           </Link>
-          <Link className="nav-item" href="/news">
+          <Link
+            className={cn('nav-item', { active: metadata?.gnb === 'news' })}
+            href="/news"
+          >
             소식
           </Link>
         </div>
       </header>
-      <main className="layout-main">{children}</main>
+      <motion.main
+        className="layout-main"
+        key={pathname} // 페이지 변경될 때마다 애니메이션 적용
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{
+          duration: 0.3,
+          ease: 'easeIn',
+        }}
+      >
+        {children}
+      </motion.main>
       <footer className="layout-footer">
         <Container>
           <div className="footer-container">

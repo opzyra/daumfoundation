@@ -49,7 +49,7 @@ function News(props: NewsProps) {
                   <div className="content-date">2025.10.03</div>
                 </div>
               </Link>
-              <div className="news-item">
+              <Link className="news-item" href="/news/1">
                 <div className="thumbnail">
                   <img src="/images/news-sample.png" alt="샘플 이미지" />
                 </div>
@@ -60,8 +60,8 @@ function News(props: NewsProps) {
                   </div>
                   <div className="content-date">2025.10.03</div>
                 </div>
-              </div>
-              <div className="news-item">
+              </Link>
+              <Link className="news-item" href="/news/1">
                 <div className="thumbnail">
                   <img src="/images/news-sample.png" alt="샘플 이미지" />
                 </div>
@@ -72,8 +72,8 @@ function News(props: NewsProps) {
                   </div>
                   <div className="content-date">2025.10.03</div>
                 </div>
-              </div>
-              <div className="news-item">
+              </Link>
+              <Link className="news-item" href="/news/1">
                 <div className="thumbnail">
                   <img src="/images/news-sample.png" alt="샘플 이미지" />
                 </div>
@@ -84,8 +84,8 @@ function News(props: NewsProps) {
                   </div>
                   <div className="content-date">2025.10.03</div>
                 </div>
-              </div>
-              <div className="news-item">
+              </Link>
+              <Link className="news-item" href="/news/1">
                 <div className="thumbnail">
                   <img src="/images/news-sample.png" alt="샘플 이미지" />
                 </div>
@@ -96,8 +96,8 @@ function News(props: NewsProps) {
                   </div>
                   <div className="content-date">2025.10.03</div>
                 </div>
-              </div>
-              <div className="news-item">
+              </Link>
+              <Link className="news-item" href="/news/1">
                 <div className="thumbnail">
                   <img src="/images/news-sample.png" alt="샘플 이미지" />
                 </div>
@@ -108,7 +108,7 @@ function News(props: NewsProps) {
                   </div>
                   <div className="content-date">2025.10.03</div>
                 </div>
-              </div>
+              </Link>
             </div>
           </div>
         </Container>
