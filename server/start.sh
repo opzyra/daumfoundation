@@ -12,8 +12,8 @@ cd ./
 yarn
 yarn build
 
-pm2 stop $NEXT_PUBLIC_APP_NAME
-pm2 delete $NEXT_PUBLIC_APP_NAME
+pm2 stop $APP_NAME
+pm2 delete $APP_NAME
 
 export NODE_ENV=production
-pm2 start ecosystem.config.js
+pm2 start ecosystem.config.js --name "$APP_NAME" --namespace "$APP_PORT" -- start

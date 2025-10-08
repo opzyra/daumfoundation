@@ -1,8 +1,6 @@
 module.exports = {
   apps: [
     {
-      name: 'daumfoundation-server',
-      namespace: '30120',
       script: './dist/main.js',
       instances: 1,
       exec_mode: 'fork',
