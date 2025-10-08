@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'stars-server',
+      name: 'daumfoundation-server',
       namespace: '30120',
       script: './dist/main.js',
       instances: 1,
