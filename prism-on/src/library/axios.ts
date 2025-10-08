@@ -37,9 +37,9 @@ instance.interceptors.response.use(
 
       if (
         (status === 401 || status === 403) &&
-        !window.location.pathname.startsWith('auth')
+        !window.location.pathname.startsWith('login')
       ) {
-        window.location.href = `${process.env.NEXT_PUBLIC_URL_AUTH}`;
+        window.location.href = `/login`;
         return;
       }
 

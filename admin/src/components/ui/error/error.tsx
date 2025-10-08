@@ -16,7 +16,7 @@ function Error({ code }: ErrorProps) {
           요청하신 페이지의 주소가 변경, 삭제되어 찾을 수 없습니다.
         </div>
         <div className="error-action">
-          <a href={process.env.NEXT_PUBLIC_URL_DOMAIN || '/'}>
+          <a href={'/'}>
             <span>메인으로</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
