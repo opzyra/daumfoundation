@@ -16,4 +16,4 @@ pm2 stop $APP_NAME
 pm2 delete $APP_NAME
 
 export NODE_ENV=production
-pm2 start ecosystem.config.js --name "$APP_NAME" --namespace "$APP_PORT" -- start
+pm2 start dist/main.js --name "$APP_NAME" --namespace "$APP_PORT" -- start
