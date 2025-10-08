@@ -27,6 +27,9 @@ function Intro(props: IntroProps) {
   return (
     <AppLayout metadata={{ gnb: 'intro' }}>
       <div className="pg-intro">
+        <div className="intro-cover">
+          <img src="/images/intro-cover.png" />
+        </div>
         <div className="intro-logo">
           <div className="logo-container">
             <div className="logo-phrase">

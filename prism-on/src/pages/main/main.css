@@ -10,26 +10,34 @@
   position: relative;
 }
 
-.pg-main .main-cover::before {
-  content: '';
+.pg-main .main-cover img {
   position: absolute;
   top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('/images/main-cover.png');
-  background-repeat: no-repeat;
-  background-position: center bottom;
   z-index: -1;
+}
+
+.pg-main .main-cover::before {
+  /*content: '';*/
+  /*position: absolute;*/
+  /*top: 0;*/
+  /*left: 0;*/
+  /*width: 100%;*/
+  /*height: 100%;*/
+  /*background-image: url('/images/main-cover.png');*/
+  /*background-repeat: no-repeat;*/
+  /*background-position: center bottom;*/
+  /*z-index: -1;*/
 }
 
 .pg-main .main-cover .cover-prism {
   position: absolute;
   top: 0;
-  left: calc(50% - 190px);
+  left: 35.36%;
   overflow: hidden;
-  width: 1088px;
-  height: 854px;
+  width: 66.2%;
+  height: 93%;
   background: transparent;
   clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
   opacity: 0.4;
@@ -63,8 +71,15 @@
   }
 }
 
+.pg-main .main-cover .cover-wrap {
+  position: relative;
+  height: 100dvh;
+}
+
 .pg-main .main-cover .cover-phrase {
-  margin-top: 350px;
+  position: absolute;
+  bottom: 16%;
+  left: 0;
 }
 
 .pg-main .main-cover .cover-phrase .phrase-logo {
@@ -153,7 +168,7 @@
 }
 
 .pg-main .main-cover .cover-phrase .phrase-description {
-  margin-top: 75px;
+  margin-top: 60px;
   font-size: 28px;
 }
 

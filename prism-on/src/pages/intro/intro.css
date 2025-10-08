@@ -1,9 +1,18 @@
 .pg-intro {
   width: 100%;
-  background-size: cover;
-  background-position: center top;
-  background-image: url('/images/intro-cover.png');
+  position: relative;
   padding-top: 135px;
+}
+
+.pg-intro .intro-cover {
+}
+
+.pg-intro .intro-cover img {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
 
 .pg-intro .intro-logo {
