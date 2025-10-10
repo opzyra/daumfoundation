@@ -7,7 +7,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 168px;
+  height: 120px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -37,7 +37,7 @@
 }
 
 .app-layout .layout-main {
-  padding-top: 168px;
+  padding-top: 120px;
 }
 
 .app-layout .layout-footer {
@@ -70,4 +70,10 @@
   display: flex;
   align-items: center;
   gap: 96px;
+}
+
+.app-layout .layout-footer .footer-brand .brand-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

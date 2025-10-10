@@ -25,7 +25,7 @@
   text-align: left;
   font-family: var(--dongle), sans-serif;
   font-size: 40px;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1;
 }
 
@@ -163,6 +163,12 @@
   width: 76px;
 }
 
+.pg-intro .intro-host .host-list .host-item .host-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .pg-intro .intro-value {
   margin-top: 328px;
   text-align: center;
@@ -173,6 +179,7 @@
   font-family: var(--dongle), sans-serif;
   font-size: 70px;
   line-height: 1;
+  font-weight: 700;
 }
 
 .pg-intro .intro-value .value-text {

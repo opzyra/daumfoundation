@@ -1,5 +1,5 @@
 .pg-main {
-  margin-top: -168px;
+  margin-top: -120px;
 }
 
 .pg-main .main-cover {
@@ -165,11 +165,13 @@
   line-height: 1;
   font-family: var(--dongle), sans-serif;
   font-size: 44px;
+  font-weight: 700;
 }
 
 .pg-main .main-cover .cover-phrase .phrase-description {
   margin-top: 60px;
   font-size: 28px;
+  color: #1e1e1e;
 }
 
 .pg-main .main-introduce {
@@ -229,65 +231,55 @@
 
 @keyframes drawFill {
   0% {
-    stroke-dashoffset: 1000;
-    fill: transparent;
-  }
-  60% {
-    stroke-dashoffset: 0;
-    fill: #292929;
+    opacity: 0;
   }
   100% {
-    stroke-dashoffset: 0;
+    opacity: 1;
     fill: #292929;
   }
 }
 
 .pg-main .main-phrase .phrase-title .title-content svg path {
-  fill: transparent;
-  stroke: #292929;
-  stroke-width: 1.4;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
+  fill: #292929;
+  opacity: 0;
 }
 
 .pg-main .main-phrase .phrase-title .title-content.animate svg path {
-  animation: drawFill 3s ease forwards;
+  animation: drawFill 0.8s ease forwards;
 }
 
 .pg-main .main-phrase .phrase-title .title-content svg path:nth-child(1) {
   animation-delay: 0s;
 }
 .pg-main .main-phrase .phrase-title .title-content svg path:nth-child(2) {
-  animation-delay: 0.1s;
+  animation-delay: 0.08s;
 }
 .pg-main .main-phrase .phrase-title .title-content svg path:nth-child(3) {
-  animation-delay: 0.2s;
+  animation-delay: 0.16s;
 }
 .pg-main .main-phrase .phrase-title .title-content svg path:nth-child(4) {
-  animation-delay: 0.3s;
+  animation-delay: 0.24s;
 }
 .pg-main .main-phrase .phrase-title .title-content svg path:nth-child(5) {
-  animation-delay: 0.4s;
+  animation-delay: 0.32s;
 }
 .pg-main .main-phrase .phrase-title .title-content svg path:nth-child(6) {
-  animation-delay: 0.5s;
+  animation-delay: 0.4s;
 }
 .pg-main .main-phrase .phrase-title .title-content svg path:nth-child(7) {
-  animation-delay: 0.6s;
+  animation-delay: 0.48s;
 }
 .pg-main .main-phrase .phrase-title .title-content svg path:nth-child(8) {
-  animation-delay: 0.7s;
+  animation-delay: 0.56s;
 }
 .pg-main .main-phrase .phrase-title .title-content svg path:nth-child(9) {
-  animation-delay: 0.8s;
+  animation-delay: 0.64s;
 }
 .pg-main .main-phrase .phrase-title .title-content svg path:nth-child(10) {
-  animation-delay: 0.9s;
+  animation-delay: 0.72s;
 }
 .pg-main .main-phrase .phrase-title .title-content svg path:nth-child(11) {
-  animation-delay: 1s;
+  animation-delay: 0.8s;
 }
 
 .pg-main .main-phrase .phrase-description {
@@ -329,9 +321,24 @@
 
 .pg-main .main-news .news-contents .news-nav .nav-item {
   cursor: pointer;
+  opacity: 1;
+  user-select: auto;
+  transition: opacity 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.pg-main .main-news .news-contents .news-nav .nav-item:hover svg path {
+.pg-main .main-news .news-contents .news-nav .nav-item.hide {
+  cursor: default;
+  user-select: none;
+}
+
+.pg-main .main-news .news-contents .news-nav .nav-item.hide svg path {
+  stroke: var(--gray-4);
+}
+
+.pg-main .main-news .news-contents .news-nav .nav-item:not(.hide):hover svg path {
   transition: all 0.3s ease-in-out;
   stroke: var(--primary);
 }

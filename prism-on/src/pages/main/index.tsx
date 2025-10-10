@@ -5,6 +5,7 @@ import { GetServerSideProps } from 'next';
 import Link from 'next/link';
 
 import { QueryClient, dehydrate } from '@tanstack/react-query';
+import cn from 'classnames';
 import type { Swiper as SwiperClass } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -36,6 +37,8 @@ function Main(props: MainProps) {
   const logoPathRef = useRef<HTMLDivElement>(null);
   const phraseTextRef = useRef<HTMLDivElement>(null);
   const [swiper, setSwiper] = useState<SwiperClass>();
+  const [slideBeginning, setSlideBeginning] = useState(false);
+  const [slideEnd, setSlideEnd] = useState(false);
 
   // useInterval(() => {
   //   const el = logoPathRef.current;
@@ -74,9 +77,9 @@ function Main(props: MainProps) {
                   </div>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="605.999"
-                    height="188.367"
-                    viewBox="0 0 605.999 188.367"
+                    width="605"
+                    height="188"
+                    viewBox="0 0 605 188"
                   >
                     <g transform="translate(-111 -557)">
                       <path
@@ -235,16 +238,18 @@ function Main(props: MainProps) {
             <div className="news-contents">
               <div className="news-nav">
                 <div
-                  className="nav-prev nav-item"
+                  className={cn('nav-prev nav-item', {
+                    hide: slideBeginning,
+                  })}
                   onClick={() => {
                     swiper?.slidePrev();
                   }}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="29.07"
-                    height="55.866"
-                    viewBox="0 0 29.07 55.866"
+                    width="29"
+                    height="55"
+                    viewBox="0 0 29 55"
                   >
                     <path
                       d="M4.5,4.5,29.948,29.948,4.5,56.124"
@@ -258,16 +263,18 @@ function Main(props: MainProps) {
                   </svg>
                 </div>
                 <div
-                  className="nav-next nav-item"
+                  className={cn('nav-next nav-item', {
+                    hide: slideEnd,
+                  })}
                   onClick={() => {
                     swiper?.slideNext();
                   }}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="29.07"
-                    height="55.866"
-                    viewBox="0 0 29.07 55.866"
+                    width="29"
+                    height="55"
+                    viewBox="0 0 29 55"
                   >
                     <path
                       d="M4.5,4.5,29.948,29.948,4.5,56.124"
@@ -288,9 +295,15 @@ function Main(props: MainProps) {
                 freeMode={false}
                 speed={1000}
                 autoplay={false}
-                loop={true}
+                loop={false}
                 onSwiper={(swiper) => {
                   setSwiper(swiper);
+                  setSlideBeginning(swiper.isBeginning);
+                  setSlideEnd(swiper.isEnd);
+                }}
+                onSlideChange={(swiper) => {
+                  setSlideBeginning(swiper.isBeginning);
+                  setSlideEnd(swiper.isEnd);
                 }}
                 spaceBetween={32}
                 allowTouchMove={true}

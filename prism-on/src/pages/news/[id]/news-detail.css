@@ -36,6 +36,7 @@
 .pg-news-detail .detail-contents img {
   padding: 0 108px;
   margin-bottom: 80px;
+  max-width: 100%;
 }
 
 .pg-news-detail .detail-contents p + p {
