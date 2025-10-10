@@ -88,12 +88,7 @@ function NewsDetail(props: NewsDetailProps) {
               <div className="nav-label">
                 <div className="label-text">이전글</div>
                 <div className="label-arrow">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="17.594"
-                    height="10.211"
-                    viewBox="0 0 17.594 10.211"
-                  >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 10">
                     <path
                       d="M923.4,999.647l7.383,7.383,7.383-7.383"
                       transform="translate(939.58 1008.444) rotate(180)"
@@ -111,12 +106,7 @@ function NewsDetail(props: NewsDetailProps) {
               <div className="nav-label">
                 <div className="label-text">다음글</div>
                 <div className="label-arrow">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="17.594"
-                    height="10.211"
-                    viewBox="0 0 17.594 10.211"
-                  >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 10">
                     <path
                       d="M923.4,999.647l7.383,7.383,7.383-7.383"
                       transform="translate(-921.986 -998.233)"

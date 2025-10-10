@@ -166,9 +166,9 @@ function Main(props: MainProps) {
               <div className="title-start">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="15.689"
-                  height="84.177"
-                  viewBox="0 0 15.689 84.177"
+                  width="15"
+                  height="84"
+                  viewBox="0 0 15 84"
                 >
                   <path
                     d="M0,0V84.177H15.689V78.148H7.506V6.029h8.183V0Z"
@@ -181,7 +181,7 @@ function Main(props: MainProps) {
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   version="1.1"
-                  viewBox="0 0 734.28 102.39"
+                  viewBox="0 0 734 102"
                 >
                   <g>
                     <g>
@@ -203,9 +203,9 @@ function Main(props: MainProps) {
               <div className="title-end">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="15.689"
-                  height="84.177"
-                  viewBox="0 0 15.689 84.177"
+                  width="15"
+                  height="84"
+                  viewBox="0 0 15 84"
                 >
                   <path
                     d="M825.829,0V6.029h8.183V78.148h-8.183v6.029h15.689V0Z"
@@ -305,11 +305,18 @@ function Main(props: MainProps) {
                   setSlideBeginning(swiper.isBeginning);
                   setSlideEnd(swiper.isEnd);
                 }}
-                spaceBetween={32}
+                spaceBetween={20}
                 allowTouchMove={true}
                 observer={true}
                 observeParents={true}
-                breakpoints={{}}
+                breakpoints={{
+                  1680: {
+                    spaceBetween: 32,
+                  },
+                  1440: {
+                    spaceBetween: 28,
+                  },
+                }}
               >
                 <SwiperSlide>
                   <Link className="news-item" href="/news/1">
