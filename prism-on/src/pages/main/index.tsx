@@ -187,9 +187,8 @@ function Main(props: MainProps) {
               <div className="title-start">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 84">
                   <path
-                    d="M0,0V84.177H15.689V78.148H7.506V6.029h8.183V0Z"
-                    transform="translate(0 0)"
                     fill="#292929"
+                    d="M0 0v84.177h15.689v-6.029H7.506V6.029h8.183V0Z"
                   />
                 </svg>
               </div>
@@ -219,9 +218,8 @@ function Main(props: MainProps) {
               <div className="title-end">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 84">
                   <path
-                    d="M825.829,0V6.029h8.183V78.148h-8.183v6.029h15.689V0Z"
-                    transform="translate(-825.829 0)"
                     fill="#292929"
+                    d="M0 0v6.029h8.183v72.119H0v6.029h15.689V0Z"
                   />
                 </svg>
               </div>
