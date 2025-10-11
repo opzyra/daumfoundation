@@ -478,7 +478,7 @@
 
 @media (max-width: 576px) {
   .pg-intro {
-    padding-top: 240px;
+    padding-top: 260px;
     overflow: hidden;
   }
 
@@ -539,7 +539,7 @@
   }
 
   .pg-intro .intro-host {
-    margin-top: 100px;
+    margin-top: 130px;
   }
 
   .pg-intro .intro-host .host-list {
@@ -568,15 +568,16 @@
     line-height: 26px;
   }
 
+  .pg-intro .intro-value {
+    margin-top: 100px;
+    padding-bottom: 86px;
+  }
+
   .pg-intro .intro-value .value-title {
     font-size: 30px;
   }
 
   .pg-intro .intro-value .value-text {
     margin-top: 24px;
-  }
-
-  .pg-intro .intro-value {
-    padding-bottom: 70px;
   }
 }

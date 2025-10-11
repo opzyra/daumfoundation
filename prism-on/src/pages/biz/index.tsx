@@ -3,6 +3,7 @@ import { ReactElement } from 'react';
 import { GetServerSideProps } from 'next';
 
 import { QueryClient, dehydrate } from '@tanstack/react-query';
+import { useDevice } from 'src/hooks/use-device';
 
 import { AppLayout } from 'src/components/layout/app-layout/app-layout';
 import Container from 'src/components/shared/container/container';
@@ -24,6 +25,8 @@ Biz.getProvider = (page: ReactElement) => {
 };
 
 function Biz(props: BizProps) {
+  const device = useDevice();
+
   return (
     <AppLayout metadata={{ gnb: 'biz' }}>
       <div className="pg-biz">
@@ -84,12 +87,27 @@ function Biz(props: BizProps) {
               </div>
             </div>
             <div className="contents-description">
-              2025 예강프리즘온은 ‘경계선 지능 아동’에 주목합니다.
-              <br />
-              경계선 지능 아동과 해당 가정을 대상으로
-              <br />
-              아동의 신체적 건강 및 사회적 기능 향상과 양육자의 정서적 건강을
-              지원합니다.
+              {!device.mobile && (
+                <>
+                  2025 예강프리즘온은 ‘경계선 지능 아동’에 주목합니다.
+                  <br />
+                  경계선 지능 아동과 해당 가정을 대상으로
+                  <br />
+                  아동의 신체적 건강 및 사회적 기능 향상과 양육자의 정서적
+                  건강을 지원합니다.
+                </>
+              )}
+              {device.mobile && (
+                <>
+                  2025 예강프리즘온은 ‘경계선 지능 아동’에 주목합니다.
+                  <br />
+                  경계선 지능 아동과 해당 가정을 대상으로
+                  <br />
+                  아동의 신체적 건강 및 사회적 기능 향상과
+                  <br />
+                  양육자의 정서적 건강을 지원합니다.
+                </>
+              )}
             </div>
             <div className="contents-detail">
               <div className="detail-item">
@@ -107,13 +125,27 @@ function Biz(props: BizProps) {
               <div className="detail-item">
                 <div className="detail-title">회복탄력성 코칭</div>
                 <div className="detail-content">
-                  경계선 지능 아동의 양육자에게
-                  <br />
-                  회복탄력성 기반 교육 및 코칭을 제공하여
-                  <br />
-                  심리적 안정과 자기 돌봄 역량을 강화하고,
-                  <br />
-                  지속 가능한 정서적 안전망을 구축합니다.
+                  {!device.mobile && (
+                    <>
+                      경계선 지능 아동의 양육자에게
+                      <br />
+                      회복탄력성 기반 교육 및 코칭을 제공하여
+                      <br />
+                      심리적 안정과 자기 돌봄 역량을 강화하고,
+                      <br />
+                      지속 가능한 정서적 안전망을 구축합니다.
+                    </>
+                  )}
+                  {device.mobile && (
+                    <>
+                      경계선 지능 아동의 양육자에게 회복탄력성 <br />
+                      기반 교육 및 코칭을 제공하여
+                      <br />
+                      심리적 안정과 자기 돌봄 역량을 강화하고,
+                      <br />
+                      지속 가능한 정서적 안전망을 구축합니다.
+                    </>
+                  )}
                 </div>
               </div>
             </div>
@@ -123,8 +155,19 @@ function Biz(props: BizProps) {
           <Container>
             <div className="startup-title">협력 비영리스타트업</div>
             <div className="startup-description">
-              예강프리즘온은 새로운 방식으로 사회문제를 해결하는 다양한
-              비영리스타트업과 함께합니다.
+              {!device.mobile && (
+                <>
+                  예강프리즘온은 새로운 방식으로 사회문제를 해결하는 다양한
+                  비영리스타트업과 함께합니다.
+                </>
+              )}
+              {device.mobile && (
+                <>
+                  예강프리즘온은 새로운 방식으로 사회문제를
+                  <br />
+                  해결하는 다양한 비영리스타트업과 함께합니다.
+                </>
+              )}
             </div>
             <div className="startup-list">
               <div className="startup-item wemeetup">
@@ -179,11 +222,25 @@ function Biz(props: BizProps) {
                   </svg>
                 </a>
                 <div className="startup-text">
-                  은퇴 여성 선수 재교육 및 스포츠 지도자 양성을 통해
-                  <br />
-                  누구나 즐길 수 있는 스포츠 경험을 제공하는 비영리 사단법인으로
-                  <br />
-                  풋살 클래스 운영에 함께합니다.
+                  {!device.mobile && (
+                    <>
+                      은퇴 여성 선수 재교육 및 스포츠 지도자 양성을 통해
+                      <br />
+                      누구나 즐길 수 있는 스포츠 경험을 제공하는 비영리
+                      사단법인으로
+                      <br />
+                      풋살 클래스 운영에 함께합니다.
+                    </>
+                  )}
+                  {device.mobile && (
+                    <>
+                      은퇴 여성 선수 재교육 및 스포츠 지도자 양성을 통해
+                      <br />
+                      누구나 즐길 수 있는 스포츠 경험을 제공하는
+                      <br />
+                      비영리 사단법인으로 풋살 클래스 운영에 함께합니다.
+                    </>
+                  )}
                 </div>
               </div>
               <div className="startup-item springme">
@@ -243,11 +300,24 @@ function Biz(props: BizProps) {
                   </svg>
                 </a>
                 <div className="startup-text">
-                  심리적 취약 상황에 있는 성인, 양육자 등을 대상으로
-                  <br />
-                  회복탄력성 기반의 코칭 프로그램을 제공하는 전문기관으로
-                  <br />
-                  회복탄력성 코칭 운영에 함께합니다.
+                  {!device.mobile && (
+                    <>
+                      심리적 취약 상황에 있는 성인, 양육자 등을 대상으로
+                      <br />
+                      회복탄력성 기반의 코칭 프로그램을 제공하는 전문기관으로
+                      <br />
+                      회복탄력성 코칭 운영에 함께합니다.
+                    </>
+                  )}
+                  {device.mobile && (
+                    <>
+                      심리적 취약 상황에 있는 성인, 양육자 등을 대상으로
+                      <br />
+                      회복탄력성 기반의 코칭 프로그램을 제공하는
+                      <br />
+                      전문기관으로 회복탄력성 코칭 운영에 함께합니다.
+                    </>
+                  )}
                 </div>
               </div>
             </div>
