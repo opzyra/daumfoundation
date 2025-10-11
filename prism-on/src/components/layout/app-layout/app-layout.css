@@ -23,7 +23,7 @@
   align-items: center;
   justify-content: center;
   width: 130px;
-  height: auto;
+  height: 40px;
   flex-shrink: 0;
 }
 
@@ -51,7 +51,8 @@
 }
 
 .app-layout .layout-main {
-  padding-top: 120px;
+  /*padding-top: 120px;*/
+  transform: translateY(120px);
 }
 
 .app-layout .layout-footer {
@@ -149,6 +150,8 @@
 
   .app-layout .layout-header .header-brand {
     width: 96px;
+    height: 30px;
+    z-index: 1;
   }
 
   @keyframes header-nav {
@@ -212,7 +215,8 @@
   }
 
   .app-layout .layout-main {
-    padding-top: 65px;
+    /*padding-top: 65px;*/
+    transform: translateY(65px);
   }
 
   .app-layout .layout-footer {
@@ -244,6 +248,7 @@
 
   .app-layout .layout-header .header-brand {
     width: 76px;
+    height: 23px;
   }
 
   .app-layout .layout-footer {
