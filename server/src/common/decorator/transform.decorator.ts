@@ -122,7 +122,7 @@ export function ContentValue() {
 
         const filtered = xss.process(value);
 
-        const regExp = new RegExp(`\src=\"${process.env.MULTER_CDN_URL}`, 'gi');
+        const regExp = new RegExp(`\src=\"${process.env.URL_CDN}`, 'gi');
         return filtered.replace(regExp, `src="#{CDN_URL}`);
       },
       {
@@ -134,7 +134,7 @@ export function ContentValue() {
         if (!value) return value;
 
         const regExp = new RegExp(`\#{CDN_URL\}`, 'gi');
-        return value.replace(regExp, process.env.MULTER_CDN_URL);
+        return value.replace(regExp, process.env.URL_CDN);
       },
       {
         toPlainOnly: true,
