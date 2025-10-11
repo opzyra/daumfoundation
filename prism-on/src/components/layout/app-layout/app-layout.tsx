@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import cn from 'classnames';
 import { motion } from 'framer-motion';
+import Hamburger from 'hamburger-react';
 
 import Container from 'src/components/shared/container/container';
 
@@ -23,16 +24,15 @@ interface AppLayoutProps {
 
 export function AppLayout({ metadata, children }: AppLayoutProps) {
   const pathname = usePathname();
+
+  const [open, setOpen] = useState(false);
+
   return (
-    <div className="app-layout">
+    <div className={cn('app-layout', { open })}>
+      <div className="layout-overlay" onClick={() => setOpen(false)}></div>
       <header className="layout-header">
         <Link className="header-brand" href="/">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="130"
-            height="40"
-            viewBox="0 0 130 40"
-          >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 40">
             <g transform="translate(-111 -557)">
               <path
                 d="M606.432,6.178a.861.861,0,0,1-.861-.861V.861a.861.861,0,0,1,1.722,0V5.318a.861.861,0,0,1-.861.861"
@@ -82,7 +82,7 @@ export function AppLayout({ metadata, children }: AppLayoutProps) {
             </g>
           </svg>
         </Link>
-        <div className="header-nav">
+        <div className={cn('header-nav')}>
           <Link
             className={cn('nav-item', { active: metadata?.gnb === 'intro' })}
             href="/intro"
@@ -102,10 +102,17 @@ export function AppLayout({ metadata, children }: AppLayoutProps) {
             소식
           </Link>
         </div>
+        <div className="header-burger">
+          <Hamburger
+            toggle={(value) => setOpen(value)}
+            toggled={open}
+            size={20}
+          />
+        </div>
       </header>
       <motion.main
         className="layout-main"
-        key={pathname} // 페이지 변경될 때마다 애니메이션 적용
+        key={pathname}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -139,14 +146,9 @@ export function AppLayout({ metadata, children }: AppLayoutProps) {
               <a
                 href="https://www.yegangfoundation.org/"
                 target="_blank"
-                className="brand-item"
+                className="brand-item yegangfoundation"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="168"
-                  height="34"
-                  viewBox="0 0 168 34"
-                >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 34">
                   <g transform="translate(0)">
                     <g transform="translate(0 0)" clip-path="url(#clip-path)">
                       <path
@@ -266,14 +268,9 @@ export function AppLayout({ metadata, children }: AppLayoutProps) {
               <a
                 href="https://www.daumfoundation.org/"
                 target="_blank"
-                className="brand-item"
+                className="brand-item daumfoundation"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="165"
-                  height="38"
-                  viewBox="0 0 165 38"
-                >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 165 38">
                   <g transform="translate(0)">
                     <path
                       d="M26.917,19.272l-7.695-.4V9.431h7.19v2.957H22.438v3.673l4.632.23ZM37.5,12.9l.1,2.988-3.162.074.223,6.886-3.189.072-.579-16.4L34.1,6.441l.2,6.533Z"

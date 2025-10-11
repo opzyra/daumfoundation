@@ -6,6 +6,7 @@ import Link from 'next/link';
 
 import { QueryClient, dehydrate } from '@tanstack/react-query';
 import cn from 'classnames';
+import { useDevice } from 'src/hooks/use-device';
 import type { Swiper as SwiperClass } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -40,6 +41,8 @@ function Main(props: MainProps) {
   const [slideBeginning, setSlideBeginning] = useState(false);
   const [slideEnd, setSlideEnd] = useState(false);
 
+  const device = useDevice();
+
   // useInterval(() => {
   //   const el = logoPathRef.current;
   //   if (!el) return;
@@ -61,7 +64,9 @@ function Main(props: MainProps) {
     >
       <div className="pg-main">
         <div className="main-cover">
-          <img src="/images/main-cover.png" />
+          <img className="desktop" src="/images/main-cover.png" />
+          <img className="tablet" src="/images/main-cover_tablet.png" />
+          <img className="mobile" src="/images/main-cover_mobile.png" />
           <div className="cover-prism"></div>
           <Container>
             <div className="cover-wrap">
@@ -75,12 +80,7 @@ function Main(props: MainProps) {
                     <div className="path-item"></div>
                     <div className="path-item"></div>
                   </div>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="605"
-                    height="188"
-                    viewBox="0 0 605 188"
-                  >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 605 188">
                     <g transform="translate(-111 -557)">
                       <path
                         d="M92.215,108.313A9.411,9.411,0,0,1,89.7,115.1a8.554,8.554,0,0,1-6.46,2.628,8.914,8.914,0,0,1-6.572-2.628,9.186,9.186,0,0,1-2.629-6.789v-6.353q0-3.065-1.314-3.833a6.945,6.945,0,0,0-3.5-.766H65.93a9.392,9.392,0,0,1-6.571-2.191,7.326,7.326,0,0,1-2.409-5.7,8.224,8.224,0,0,1,2.08-5.914q2.081-2.187,6.9-2.19h3.285q4.815,0,4.819-4.6V72.39q0-3.065-1.2-4.052a5.622,5.622,0,0,0-3.615-.985H65.93q-5.041,0-7.447-2.848A22.35,22.35,0,0,1,59.8,72.39a27.107,27.107,0,0,1-4.161,15A29.079,29.079,0,0,1,44.683,97.47a31.207,31.207,0,0,1-14.894,3.615,31.2,31.2,0,0,1-14.9-3.615A28.215,28.215,0,0,1,4.052,87.394,27.613,27.613,0,0,1,0,72.39,26.68,26.68,0,0,1,4.052,57.714a28.518,28.518,0,0,1,10.842-9.966,31.2,31.2,0,0,1,14.9-3.614,30.85,30.85,0,0,1,16.1,4.381A28.673,28.673,0,0,1,56.95,60.124v-.877a8.224,8.224,0,0,1,2.08-5.914q2.081-2.187,6.9-2.19h3.285a5.714,5.714,0,0,0,3.5-.985q1.314-.986,1.314-3.833V43.7a13.551,13.551,0,0,1,.548-3.177A8.426,8.426,0,0,1,77.1,36.577q1.97-1.858,6.134-1.862a8.323,8.323,0,0,1,8.98,8.982ZM18.4,72.39a10.31,10.31,0,0,0,3.4,8.214,11.786,11.786,0,0,0,8,2.957A11.977,11.977,0,0,0,38.112,80.6,10.485,10.485,0,0,0,41.4,72.39a10.223,10.223,0,0,0-3.285-8,11.977,11.977,0,0,0-8.323-2.957,11.786,11.786,0,0,0-8,2.957,10.057,10.057,0,0,0-3.4,8m102.073,37.018a10.26,10.26,0,0,1-2.19,6.789,7.8,7.8,0,0,1-6.352,2.628,8.647,8.647,0,0,1-6.352-2.628,9.182,9.182,0,0,1-2.63-6.789V43.7a16.672,16.672,0,0,1,.439-3.177,7.654,7.654,0,0,1,2.409-3.943q1.973-1.858,6.134-1.862,4.379,0,6.461,2.41a9.73,9.73,0,0,1,2.081,6.572Z"
@@ -130,18 +130,39 @@ function Main(props: MainProps) {
           <Container>
             <div className="introduce-title">예강프리즘온은</div>
             <div className="introduce-description">
-              사회적 관심과 지원이 부족한 <strong>복지 사각지대를 조명</strong>
-              하고,
-              <br />
-              당사자 수요에 기반해 다양한 프로그램, 서비스 등을 입체적으로
-              제공하여
-              <br />
-              <strong>
-                신체적・정서적・사회적 건강 증진을 위한 통합적 지원 체계를 구축
-              </strong>
-              하는
-              <br />
-              예강희망키움재단과 다음세대재단의 협력 사업입니다.
+              {!device.portable && (
+                <>
+                  사회적 관심과 지원이 부족한{' '}
+                  <strong>복지 사각지대를 조명</strong>
+                  하고,
+                  <br />
+                  당사자 수요에 기반해 다양한 프로그램, 서비스 등을 입체적으로
+                  제공하여
+                  <br />
+                  <strong>
+                    신체적・정서적・사회적 건강 증진을 위한 통합적 지원 체계를
+                    구축
+                  </strong>
+                  하는
+                  <br />
+                  예강희망키움재단과 다음세대재단의 협력 사업입니다.
+                </>
+              )}
+              {device.portable && (
+                <>
+                  사회적 관심과 지원이 부족한
+                  <strong>복지 사각지대를 조명</strong>하고,
+                  <br />
+                  당사자 수요에 기반해 다양한 프로그램, 서비스 등을
+                  <br />
+                  입체적으로 제공하여 <strong>신체적・정서적・사회적</strong>
+                  <br />
+                  <strong>건강 증진을 위한 통합적 지원 체계를 구축</strong>
+                  하는
+                  <br />
+                  예강희망키움재단과 다음세대재단의 협력 사업입니다.
+                </>
+              )}
             </div>
             <div className="introduce-more">
               <Link href="/intro">
@@ -164,12 +185,7 @@ function Main(props: MainProps) {
             <div className="phrase-label">PRISM:ON</div>
             <div className="phrase-title">
               <div className="title-start">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="15"
-                  height="84"
-                  viewBox="0 0 15 84"
-                >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 84">
                   <path
                     d="M0,0V84.177H15.689V78.148H7.506V6.029h8.183V0Z"
                     transform="translate(0 0)"
@@ -201,12 +217,7 @@ function Main(props: MainProps) {
                 </svg>
               </div>
               <div className="title-end">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="15"
-                  height="84"
-                  viewBox="0 0 15 84"
-                >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 84">
                   <path
                     d="M825.829,0V6.029h8.183V78.148h-8.183v6.029h15.689V0Z"
                     transform="translate(-825.829 0)"
@@ -216,11 +227,25 @@ function Main(props: MainProps) {
               </div>
             </div>
             <div className="phrase-description">
-              2025 예강프리즘온은 <strong>경계선 지능 아동과 해당 가정</strong>
-              을 대상으로
-              <br />
-              아동의 신체적 건강 및 사회적 기능 향상과 양육자의 정서적 건강을
-              지원합니다.
+              {!device.portable && (
+                <>
+                  2025 예강프리즘온은{' '}
+                  <strong>경계선 지능 아동과 해당 가정</strong>
+                  을 대상으로
+                  <br />
+                  아동의 신체적 건강 및 사회적 기능 향상과 양육자의 정서적
+                  건강을 지원합니다.
+                </>
+              )}
+              {device.portable && (
+                <>
+                  2025 예강프리즘온은 <strong>경계선 지능 아동과</strong>
+                  <br />
+                  <strong>해당 가정</strong>
+                  을 대상으로 아동의 신체적 건강 및 <br />
+                  사회적 기능 향상과 양육자의 정서적 건강을 지원합니다.
+                </>
+              )}
             </div>
             <div className="phrase-more">
               <Link href="/biz">
@@ -288,37 +313,8 @@ function Main(props: MainProps) {
                   </svg>
                 </div>
               </div>
-              <Swiper
-                className="news-list"
-                modules={[]}
-                slidesPerView={3}
-                freeMode={false}
-                speed={1000}
-                autoplay={false}
-                loop={false}
-                onSwiper={(swiper) => {
-                  setSwiper(swiper);
-                  setSlideBeginning(swiper.isBeginning);
-                  setSlideEnd(swiper.isEnd);
-                }}
-                onSlideChange={(swiper) => {
-                  setSlideBeginning(swiper.isBeginning);
-                  setSlideEnd(swiper.isEnd);
-                }}
-                spaceBetween={20}
-                allowTouchMove={true}
-                observer={true}
-                observeParents={true}
-                breakpoints={{
-                  1680: {
-                    spaceBetween: 32,
-                  },
-                  1440: {
-                    spaceBetween: 28,
-                  },
-                }}
-              >
-                <SwiperSlide>
+              {device.portable && (
+                <div className="news-list">
                   <Link className="news-item" href="/news/1">
                     <div className="thumbnail">
                       <img src="/images/news-sample.png" alt="샘플 이미지" />
@@ -331,8 +327,6 @@ function Main(props: MainProps) {
                       <div className="content-date">2025.10.03</div>
                     </div>
                   </Link>
-                </SwiperSlide>
-                <SwiperSlide>
                   <Link className="news-item" href="/news/1">
                     <div className="thumbnail">
                       <img src="/images/news-sample.png" alt="샘플 이미지" />
@@ -345,8 +339,6 @@ function Main(props: MainProps) {
                       <div className="content-date">2025.10.03</div>
                     </div>
                   </Link>
-                </SwiperSlide>
-                <SwiperSlide>
                   <Link className="news-item" href="/news/1">
                     <div className="thumbnail">
                       <img src="/images/news-sample.png" alt="샘플 이미지" />
@@ -359,36 +351,111 @@ function Main(props: MainProps) {
                       <div className="content-date">2025.10.03</div>
                     </div>
                   </Link>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <Link className="news-item" href="/news/1">
-                    <div className="thumbnail">
-                      <img src="/images/news-sample.png" alt="샘플 이미지" />
-                    </div>
-                    <div className="content">
-                      <div className="content-title">
-                        아주 길게 만들어서 제목을 길게 입력하여 2줄로 만들면
-                        이렇게 처리됩니다.
+                </div>
+              )}
+              {!device.portable && (
+                <Swiper
+                  className="news-list"
+                  modules={[]}
+                  slidesPerView={3}
+                  freeMode={false}
+                  speed={1000}
+                  autoplay={false}
+                  loop={false}
+                  onSwiper={(swiper) => {
+                    setSwiper(swiper);
+                    setSlideBeginning(swiper.isBeginning);
+                    setSlideEnd(swiper.isEnd);
+                  }}
+                  onSlideChange={(swiper) => {
+                    setSlideBeginning(swiper.isBeginning);
+                    setSlideEnd(swiper.isEnd);
+                  }}
+                  spaceBetween={20}
+                  allowTouchMove={true}
+                  observer={true}
+                  observeParents={true}
+                  breakpoints={{
+                    1680: {
+                      spaceBetween: 32,
+                    },
+                    1440: {
+                      spaceBetween: 28,
+                    },
+                  }}
+                >
+                  <SwiperSlide>
+                    <Link className="news-item" href="/news/1">
+                      <div className="thumbnail">
+                        <img src="/images/news-sample.png" alt="샘플 이미지" />
                       </div>
-                      <div className="content-date">2025.10.03</div>
-                    </div>
-                  </Link>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <Link className="news-item" href="/news/1">
-                    <div className="thumbnail">
-                      <img src="/images/news-sample.png" alt="샘플 이미지" />
-                    </div>
-                    <div className="content">
-                      <div className="content-title">
-                        아주 길게 만들어서 제목을 길게 입력하여 2줄로 만들면
-                        이렇게 처리됩니다.
+                      <div className="content">
+                        <div className="content-title">
+                          아주 길게 만들어서 제목을 길게 입력하여 2줄로 만들면
+                          이렇게 처리됩니다.
+                        </div>
+                        <div className="content-date">2025.10.03</div>
                       </div>
-                      <div className="content-date">2025.10.03</div>
-                    </div>
-                  </Link>
-                </SwiperSlide>
-              </Swiper>
+                    </Link>
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <Link className="news-item" href="/news/1">
+                      <div className="thumbnail">
+                        <img src="/images/news-sample.png" alt="샘플 이미지" />
+                      </div>
+                      <div className="content">
+                        <div className="content-title">
+                          아주 길게 만들어서 제목을 길게 입력하여 2줄로 만들면
+                          이렇게 처리됩니다.
+                        </div>
+                        <div className="content-date">2025.10.03</div>
+                      </div>
+                    </Link>
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <Link className="news-item" href="/news/1">
+                      <div className="thumbnail">
+                        <img src="/images/news-sample.png" alt="샘플 이미지" />
+                      </div>
+                      <div className="content">
+                        <div className="content-title">
+                          아주 길게 만들어서 제목을 길게 입력하여 2줄로 만들면
+                          이렇게 처리됩니다.
+                        </div>
+                        <div className="content-date">2025.10.03</div>
+                      </div>
+                    </Link>
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <Link className="news-item" href="/news/1">
+                      <div className="thumbnail">
+                        <img src="/images/news-sample.png" alt="샘플 이미지" />
+                      </div>
+                      <div className="content">
+                        <div className="content-title">
+                          아주 길게 만들어서 제목을 길게 입력하여 2줄로 만들면
+                          이렇게 처리됩니다.
+                        </div>
+                        <div className="content-date">2025.10.03</div>
+                      </div>
+                    </Link>
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <Link className="news-item" href="/news/1">
+                      <div className="thumbnail">
+                        <img src="/images/news-sample.png" alt="샘플 이미지" />
+                      </div>
+                      <div className="content">
+                        <div className="content-title">
+                          아주 길게 만들어서 제목을 길게 입력하여 2줄로 만들면
+                          이렇게 처리됩니다.
+                        </div>
+                        <div className="content-date">2025.10.03</div>
+                      </div>
+                    </Link>
+                  </SwiperSlide>
+                </Swiper>
+              )}
             </div>
             <div className="news-more">
               <Link href="/news">

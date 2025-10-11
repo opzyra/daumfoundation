@@ -14,7 +14,16 @@
   padding: 0 110px 0 140px;
   background: #ffffff;
   box-shadow: 0 4px 10px #0000001a;
+  border-bottom: 1px solid transparent;
   z-index: 50;
+}
+
+.app-layout .layout-header .header-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 130px;
+  flex-shrink: 0;
 }
 
 .app-layout .layout-header .header-nav {
@@ -34,6 +43,10 @@
 .app-layout .layout-header .header-nav .nav-item.active,
 .app-layout .layout-header .header-nav .nav-item:hover {
   color: var(--primary) !important;
+}
+
+.app-layout .layout-header .header-burger {
+  display: none;
 }
 
 .app-layout .layout-main {
@@ -78,6 +91,14 @@
   justify-content: center;
 }
 
+.app-layout .layout-footer .footer-brand .brand-item.yegangfoundation {
+  width: 168px;
+}
+
+.app-layout .layout-footer .footer-brand .brand-item.daumfoundation {
+  width: 165px;
+}
+
 @media (max-width: 1680px) {
   .app-layout .layout-header {
     padding: 0 70px 0 100px;
@@ -111,5 +132,141 @@
 
   .app-layout .layout-footer {
     height: 200px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .app-layout .layout-header {
+    height: 65px;
+    padding: 0 36px;
+  }
+
+  .app-layout.open .layout-header {
+    box-shadow: none;
+    border-bottom: 1px solid #f3f3f3;
+  }
+
+  .app-layout .layout-header .header-brand {
+    width: 96px;
+  }
+
+  @keyframes header-nav {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .app-layout .layout-header .header-nav {
+    position: fixed;
+    top: 65px;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    flex-direction: column;
+    gap: 0;
+    opacity: 0;
+    overflow: hidden;
+    height: 0;
+  }
+
+  .app-layout .layout-header .header-nav .nav-item {
+    width: 100%;
+    padding: 14px 36px;
+    text-align: center;
+  }
+
+  .app-layout.open .layout-header .header-nav {
+    padding: 12px 0;
+    box-shadow: 0 4px 10px #0000001a;
+    animation: header-nav 0.15s linear forwards;
+    height: fit-content;
+  }
+
+  .app-layout .layout-header .header-burger {
+    display: block;
+    transform: translateX(15px);
+    overflow: hidden;
+  }
+
+  .app-layout .layout-overlay {
+    position: fixed;
+    top: 0;
+    left: -9999px;
+    width: 100%;
+    height: 100dvh;
+    background: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    z-index: 1;
+  }
+
+  .app-layout.open .layout-overlay {
+    left: 0;
+    opacity: 1;
+    z-index: 10;
+    transition: 0.15s linear forwards;
+  }
+
+  .app-layout .layout-main {
+    padding-top: 65px;
+  }
+
+  .app-layout .layout-footer {
+    height: 180px;
+  }
+
+  .app-layout .layout-footer .footer-container {
+    padding-top: 36px;
+  }
+
+  .app-layout .layout-footer .footer-brand {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .app-layout .layout-footer .footer-brand .brand-item.yegangfoundation {
+    width: 124px;
+  }
+
+  .app-layout .layout-footer .footer-brand .brand-item.daumfoundation {
+    width: 120px;
+  }
+}
+
+@media (max-width: 576px) {
+  .app-layout .layout-header {
+    padding: 0 20px;
+  }
+
+  .app-layout .layout-header .header-brand {
+    width: 76px;
+  }
+
+  .app-layout .layout-footer {
+    height: 130px;
+  }
+
+  .app-layout .layout-footer .footer-container {
+    padding-top: 24px;
+  }
+
+  .app-layout .layout-footer .footer-meta .meta-row {
+    font-size: 12px;
+  }
+
+  .app-layout .layout-footer .footer-brand {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .app-layout .layout-footer .footer-brand .brand-item.yegangfoundation {
+    width: 80px;
+  }
+
+  .app-layout .layout-footer .footer-brand .brand-item.daumfoundation {
+    width: 80px;
   }
 }
