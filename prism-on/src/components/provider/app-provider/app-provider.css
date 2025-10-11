@@ -21,3 +21,9 @@ body {
   line-height: 1.5;
   color: var(--text);
 }
+
+@media (max-width: 375px) {
+  * {
+    letter-spacing: -0.35px;
+  }
+}

@@ -51,8 +51,7 @@
 }
 
 .app-layout .layout-main {
-  /*padding-top: 120px;*/
-  transform: translateY(120px);
+  padding-top: 120px;
 }
 
 .app-layout .layout-footer {
@@ -215,7 +214,7 @@
   }
 
   .app-layout .layout-main {
-    transform: translateY(0px);
+    padding-top: 0;
   }
 
   .app-layout .layout-footer {
@@ -228,7 +227,7 @@
 
   .app-layout .layout-footer .footer-brand {
     flex-direction: column;
-    gap: 24px;
+    gap: 4px;
   }
 
   .app-layout .layout-footer .footer-brand .brand-item.yegangfoundation {
@@ -264,7 +263,7 @@
 
   .app-layout .layout-footer .footer-brand {
     flex-direction: column;
-    gap: 12px;
+    gap: 0;
   }
 
   .app-layout .layout-footer .footer-brand .brand-item.yegangfoundation {

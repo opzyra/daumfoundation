@@ -549,7 +549,7 @@
   .pg-intro .intro-host .host-list .host-item {
     width: 100%;
     border-radius: 20px;
-    padding: 42px 24px;
+    padding: 42px 10px;
   }
 
   .pg-intro .intro-host .host-list .host-item::before {

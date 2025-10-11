@@ -587,7 +587,7 @@
 
   .pg-biz .biz-contents .contents-detail .detail-item {
     width: 100%;
-    padding: 90px 20px;
+    padding: 90px 0;
     border-radius: 20px;
   }
 
@@ -613,7 +613,7 @@
 
   .pg-biz .biz-startup .startup-list .startup-item {
     width: 100%;
-    padding: 36px 16px;
+    padding: 36px 8px;
     border-radius: 20px;
   }
 
@@ -627,7 +627,7 @@
 
   .pg-biz .biz-startup .startup-list .startup-item .startup-text {
     margin-top: 20px;
-    line-height: 24px;
+    line-height: 28px;
   }
 
   .pg-biz .biz-partner {
