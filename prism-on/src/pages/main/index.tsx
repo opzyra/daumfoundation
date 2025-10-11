@@ -185,7 +185,12 @@ function Main(props: MainProps) {
             <div className="phrase-label">PRISM:ON</div>
             <div className="phrase-title">
               <div className="title-start">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 84">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="15"
+                  height="84"
+                  viewBox="0 0 15 84"
+                >
                   <path
                     fill="#292929"
                     d="M0 0v84.177h15.689v-6.029H7.506V6.029h8.183V0Z"
@@ -216,7 +221,12 @@ function Main(props: MainProps) {
                 </svg>
               </div>
               <div className="title-end">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 84">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="15"
+                  height="84"
+                  viewBox="0 0 15 84"
+                >
                   <path
                     fill="#292929"
                     d="M0 0v6.029h8.183v72.119H0v6.029h15.689V0Z"

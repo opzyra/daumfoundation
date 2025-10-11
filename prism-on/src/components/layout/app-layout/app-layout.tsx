@@ -114,7 +114,12 @@ export function AppLayout({ metadata, children }: AppLayoutProps) {
                 target="_blank"
                 className="brand-item yegangfoundation"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 34">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="168"
+                  height="34"
+                  viewBox="0 0 168 34"
+                >
                   <g transform="translate(0)">
                     <g transform="translate(0 0)" clip-path="url(#clip-path)">
                       <path
@@ -236,7 +241,12 @@ export function AppLayout({ metadata, children }: AppLayoutProps) {
                 target="_blank"
                 className="brand-item daumfoundation"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 165 38">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="165"
+                  height="38"
+                  viewBox="0 0 165 38"
+                >
                   <g transform="translate(0)">
                     <path
                       d="M26.917,19.272l-7.695-.4V9.431h7.19v2.957H22.438v3.673l4.632.23ZM37.5,12.9l.1,2.988-3.162.074.223,6.886-3.189.072-.579-16.4L34.1,6.441l.2,6.533Z"

@@ -776,6 +776,7 @@
   .pg-main .main-phrase .phrase-title .title-start,
   .pg-main .main-phrase .phrase-title .title-end {
     width: 8px;
+    height: 44px;
   }
 
   .pg-main .main-phrase .phrase-title .title-content svg {
@@ -904,7 +905,7 @@
   }
 
   .pg-main .main-cover .cover-phrase {
-    top: 220px;
+    top: 260px;
   }
 
   .pg-main .main-introduce .introduce-title {
@@ -949,6 +950,7 @@
   .pg-main .main-phrase .phrase-title .title-start,
   .pg-main .main-phrase .phrase-title .title-end {
     width: 6px;
+    height: 34px;
   }
 
   .pg-main .main-phrase .phrase-description {
