@@ -819,6 +819,10 @@
 }
 
 @media (max-width: 576px) {
+  .pg-main {
+    overscroll-behavior-y: contain;
+  }
+
   .pg-main .main-cover img.desktop {
     display: none;
   }
