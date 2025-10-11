@@ -32,7 +32,12 @@ export function AppLayout({ metadata, children }: AppLayoutProps) {
       <div className="layout-overlay" onClick={() => setOpen(false)}></div>
       <header className="layout-header">
         <Link className="header-brand" href="/">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 40">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="130"
+            height="40"
+            viewBox="0 0 130 40"
+          >
             <path
               fill="#ef820c"
               d="M119.185 6.178a.86.86 0 0 1-.861-.861V.861a.861.861 0 0 1 1.722 0v4.457a.86.86 0 0 1-.861.861M113.016 8.589a.86.86 0 0 1-.609-.252l-3.151-3.151a.861.861 0 0 1 1.217-1.217l3.151 3.151a.861.861 0 0 1-.609 1.47M125.354 8.589a.861.861 0 0 1-.609-1.47l3.151-3.151a.861.861 0 0 1 1.217 1.217l-3.151 3.151a.86.86 0 0 1-.609.252"
