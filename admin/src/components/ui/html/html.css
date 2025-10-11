@@ -25,6 +25,10 @@
   max-width: 100%;
 }
 
+.ui-html .se-image-container.__se__float-center figure {
+  margin: 0 auto;
+}
+
 .ui-html.border {
   border-width: 1px;
   border-style: solid;

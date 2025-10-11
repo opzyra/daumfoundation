@@ -19,9 +19,11 @@ import type {
   ArticleListAdminDto,
   ArticleListClientDto,
   ArticleRemoveAdminParam,
+  ArticleSurroundClientDto,
   ArticleUploadAdminParam,
   ArticleUploadDto,
-  ClientListArticleParams,
+  ClientFlattenArticleParams,
+  ClientLatestArticleParams,
   ClientSearchArticleParams,
   ResourceDto,
   ResourceParam,
@@ -1251,6 +1253,93 @@ export function useClientFindOneBoardArticle<
 }
 
 /**
+ * @summary 관리형 게시글 주변글
+ */
+export const clientSurroundArticle = (
+  id: number,
+  options?: SecondParameter<typeof orvalInstance>,
+  signal?: AbortSignal,
+) => {
+  return orvalInstance<ArticleSurroundClientDto>(
+    { url: `/client/article/surround/${id}`, method: 'GET', signal },
+    options,
+  );
+};
+
+export const getClientSurroundArticleQueryKey = (id: number) => {
+  return [`/client/article/surround/${id}`] as const;
+};
+
+export const getClientSurroundArticleQueryOptions = <
+  TData = Awaited<ReturnType<typeof clientSurroundArticle>>,
+  TError = unknown,
+>(
+  id: number,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof clientSurroundArticle>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof orvalInstance>;
+  },
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey =
+    queryOptions?.queryKey ?? getClientSurroundArticleQueryKey(id);
+
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof clientSurroundArticle>>
+  > = ({ signal }) => clientSurroundArticle(id, requestOptions, signal);
+
+  return {
+    queryKey,
+    queryFn,
+    enabled: !!id,
+    ...queryOptions,
+  } as UseQueryOptions<
+    Awaited<ReturnType<typeof clientSurroundArticle>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type ClientSurroundArticleQueryResult = NonNullable<
+  Awaited<ReturnType<typeof clientSurroundArticle>>
+>;
+export type ClientSurroundArticleQueryError = unknown;
+
+/**
+ * @summary 관리형 게시글 주변글
+ */
+
+export function useClientSurroundArticle<
+  TData = Awaited<ReturnType<typeof clientSurroundArticle>>,
+  TError = unknown,
+>(
+  id: number,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof clientSurroundArticle>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof orvalInstance>;
+  },
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getClientSurroundArticleQueryOptions(id, options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  query.queryKey = queryOptions.queryKey;
+
+  return query;
+}
+
+/**
  * @summary 아티클 조회수
  */
 export const clientHitArticle = (
@@ -1423,6 +1512,174 @@ export function useClientSearchArticle<
 }
 
 /**
+ * @summary 아티클 최신글 조회
+ */
+export const clientLatestArticle = (
+  params: ClientLatestArticleParams,
+  options?: SecondParameter<typeof orvalInstance>,
+  signal?: AbortSignal,
+) => {
+  return orvalInstance<ArticleDto[]>(
+    { url: `/client/article/latest`, method: 'GET', params, signal },
+    options,
+  );
+};
+
+export const getClientLatestArticleQueryKey = (
+  params: ClientLatestArticleParams,
+) => {
+  return [`/client/article/latest`, ...(params ? [params] : [])] as const;
+};
+
+export const getClientLatestArticleQueryOptions = <
+  TData = Awaited<ReturnType<typeof clientLatestArticle>>,
+  TError = unknown,
+>(
+  params: ClientLatestArticleParams,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof clientLatestArticle>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof orvalInstance>;
+  },
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey =
+    queryOptions?.queryKey ?? getClientLatestArticleQueryKey(params);
+
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof clientLatestArticle>>
+  > = ({ signal }) => clientLatestArticle(params, requestOptions, signal);
+
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof clientLatestArticle>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type ClientLatestArticleQueryResult = NonNullable<
+  Awaited<ReturnType<typeof clientLatestArticle>>
+>;
+export type ClientLatestArticleQueryError = unknown;
+
+/**
+ * @summary 아티클 최신글 조회
+ */
+
+export function useClientLatestArticle<
+  TData = Awaited<ReturnType<typeof clientLatestArticle>>,
+  TError = unknown,
+>(
+  params: ClientLatestArticleParams,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof clientLatestArticle>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof orvalInstance>;
+  },
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getClientLatestArticleQueryOptions(params, options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  query.queryKey = queryOptions.queryKey;
+
+  return query;
+}
+
+/**
+ * @summary 아티클 전체 조회
+ */
+export const clientFlattenArticle = (
+  params?: ClientFlattenArticleParams,
+  options?: SecondParameter<typeof orvalInstance>,
+  signal?: AbortSignal,
+) => {
+  return orvalInstance<ArticleDto[]>(
+    { url: `/client/article/flatten`, method: 'GET', params, signal },
+    options,
+  );
+};
+
+export const getClientFlattenArticleQueryKey = (
+  params?: ClientFlattenArticleParams,
+) => {
+  return [`/client/article/flatten`, ...(params ? [params] : [])] as const;
+};
+
+export const getClientFlattenArticleQueryOptions = <
+  TData = Awaited<ReturnType<typeof clientFlattenArticle>>,
+  TError = unknown,
+>(
+  params?: ClientFlattenArticleParams,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof clientFlattenArticle>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof orvalInstance>;
+  },
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey =
+    queryOptions?.queryKey ?? getClientFlattenArticleQueryKey(params);
+
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof clientFlattenArticle>>
+  > = ({ signal }) => clientFlattenArticle(params, requestOptions, signal);
+
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof clientFlattenArticle>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type ClientFlattenArticleQueryResult = NonNullable<
+  Awaited<ReturnType<typeof clientFlattenArticle>>
+>;
+export type ClientFlattenArticleQueryError = unknown;
+
+/**
+ * @summary 아티클 전체 조회
+ */
+
+export function useClientFlattenArticle<
+  TData = Awaited<ReturnType<typeof clientFlattenArticle>>,
+  TError = unknown,
+>(
+  params?: ClientFlattenArticleParams,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof clientFlattenArticle>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof orvalInstance>;
+  },
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getClientFlattenArticleQueryOptions(params, options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  query.queryKey = queryOptions.queryKey;
+
+  return query;
+}
+
+/**
  * @summary 아티클 조회
  */
 export const clientFindOneArticle = (
@@ -1499,90 +1756,6 @@ export function useClientFindOneArticle<
   },
 ): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
   const queryOptions = getClientFindOneArticleQueryOptions(id, options);
-
-  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
-    queryKey: QueryKey;
-  };
-
-  query.queryKey = queryOptions.queryKey;
-
-  return query;
-}
-
-/**
- * @summary 아티클 전체 조회
- */
-export const clientListArticle = (
-  params?: ClientListArticleParams,
-  options?: SecondParameter<typeof orvalInstance>,
-  signal?: AbortSignal,
-) => {
-  return orvalInstance<ArticleDto[]>(
-    { url: `/client/article/list`, method: 'GET', params, signal },
-    options,
-  );
-};
-
-export const getClientListArticleQueryKey = (
-  params?: ClientListArticleParams,
-) => {
-  return [`/client/article/list`, ...(params ? [params] : [])] as const;
-};
-
-export const getClientListArticleQueryOptions = <
-  TData = Awaited<ReturnType<typeof clientListArticle>>,
-  TError = unknown,
->(
-  params?: ClientListArticleParams,
-  options?: {
-    query?: UseQueryOptions<
-      Awaited<ReturnType<typeof clientListArticle>>,
-      TError,
-      TData
-    >;
-    request?: SecondParameter<typeof orvalInstance>;
-  },
-) => {
-  const { query: queryOptions, request: requestOptions } = options ?? {};
-
-  const queryKey =
-    queryOptions?.queryKey ?? getClientListArticleQueryKey(params);
-
-  const queryFn: QueryFunction<
-    Awaited<ReturnType<typeof clientListArticle>>
-  > = ({ signal }) => clientListArticle(params, requestOptions, signal);
-
-  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
-    Awaited<ReturnType<typeof clientListArticle>>,
-    TError,
-    TData
-  > & { queryKey: QueryKey };
-};
-
-export type ClientListArticleQueryResult = NonNullable<
-  Awaited<ReturnType<typeof clientListArticle>>
->;
-export type ClientListArticleQueryError = unknown;
-
-/**
- * @summary 아티클 전체 조회
- */
-
-export function useClientListArticle<
-  TData = Awaited<ReturnType<typeof clientListArticle>>,
-  TError = unknown,
->(
-  params?: ClientListArticleParams,
-  options?: {
-    query?: UseQueryOptions<
-      Awaited<ReturnType<typeof clientListArticle>>,
-      TError,
-      TData
-    >;
-    request?: SecondParameter<typeof orvalInstance>;
-  },
-): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
-  const queryOptions = getClientListArticleQueryOptions(params, options);
 
   const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
     queryKey: QueryKey;

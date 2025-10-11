@@ -85,7 +85,7 @@ function ArticleEdit(props: ArticleEditProps) {
   } = useForm<ArticleAdminParam>({
     id: 'ArticleForm',
     onSubmit: async (form) => {
-      if (!board?.thumbnail && board?.view === 'list') {
+      if (!board?.thumbnail && board?.view === 'list' && !form.thumbnail) {
         form.extract = true;
       }
 
@@ -116,7 +116,7 @@ function ArticleEdit(props: ArticleEditProps) {
       await queryClient.invalidateQueries(adminFindOneArticleQueryKey);
       await queryClient.invalidateQueries(adminSearchArticleQueryKey);
 
-      await router.push(`/article/${form.board?.namekey}/${dto.id}`);
+      await router.push(`/article/${form.boardKey}/${dto.id}`);
       mode === 'create' ? toastr.create() : toastr.update();
     },
   });
@@ -214,59 +214,60 @@ function ArticleEdit(props: ArticleEditProps) {
                     <div className="message"></div>
                   </div>
                 </div>
-                {board?.view === 'image' ||
-                  (board?.thumbnail && (
-                    <div className="form-item">
-                      <div className="label">
-                        <div className="text">썸네일</div>
-                      </div>
-                      <div className="content">
-                        <div className="control">
-                          <div className="thumbnail">
-                            <div className="image">
-                              <Controller
-                                name="thumbnail"
-                                control={control}
-                                render={({ field }) => (
-                                  <UploadImage
-                                    width={board?.thumbWidth || 600}
-                                    height={board?.thumbHeight || 400}
-                                    status={errors.thumbnail && 'error'}
-                                    onUpload={async (file) => {
-                                      const resource =
-                                        await articleService.adminThumbnailArticle(
-                                          {
-                                            file: file as Blob,
-                                          },
-                                        );
-                                      setValue('thumbnail', resource.path);
-                                      clearErrors('thumbnail');
-                                    }}
-                                    onClear={() => {
-                                      setValue('thumbnail', undefined);
-                                    }}
-                                    {...field}
-                                  />
-                                )}
-                              />
-                            </div>
-                            <div className="extract">
-                              <Controller
-                                name="extract"
-                                control={control}
-                                render={({ field }) => (
-                                  <Checkbox {...field} checked={!!field.value}>
-                                    내용에서 썸네일 추출
-                                  </Checkbox>
-                                )}
-                              />
-                            </div>
+                {(board?.view === 'image' || board?.thumbnail) && (
+                  <div className="form-item">
+                    <div className="label">
+                      <div className="text">썸네일</div>
+                    </div>
+                    <div className="content">
+                      <div className="control">
+                        <div className="thumbnail">
+                          <div className="image">
+                            <Controller
+                              name="thumbnail"
+                              control={control}
+                              render={({ field }) => (
+                                <UploadImage
+                                  width={board?.thumbWidth || 600}
+                                  height={board?.thumbHeight || 400}
+                                  status={errors.thumbnail && 'error'}
+                                  onUpload={async (file) => {
+                                    const resource =
+                                      await articleService.adminThumbnailArticle(
+                                        {
+                                          file: file as Blob,
+                                        },
+                                      );
+                                    setValue('thumbnail', resource.path);
+                                    setValue('extract', false);
+                                    clearErrors('thumbnail');
+                                  }}
+                                  onClear={() => {
+                                    setValue('thumbnail', undefined);
+                                    setValue('extract', true);
+                                  }}
+                                  {...field}
+                                />
+                              )}
+                            />
+                          </div>
+                          <div className="extract">
+                            <Controller
+                              name="extract"
+                              control={control}
+                              render={({ field }) => (
+                                <Checkbox {...field} checked={!!field.value}>
+                                  내용에서 썸네일 추출
+                                </Checkbox>
+                              )}
+                            />
                           </div>
                         </div>
-                        <div className="message"></div>
                       </div>
+                      <div className="message"></div>
                     </div>
-                  ))}
+                  </div>
+                )}
               </div>
             </div>
             <div className="group">

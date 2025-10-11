@@ -284,7 +284,7 @@ export class ArticleAdminService {
 
     let thumbnail = param.thumbnail || null;
 
-    if (thumbnail && param.extract) {
+    if (param.extract) {
       thumbnail = await StringUtils.extractThumbnail(param.content);
     }
 
@@ -326,7 +326,7 @@ export class ArticleAdminService {
 
     let thumbnail = param.thumbnail || null;
 
-    if (thumbnail && param.extract) {
+    if (param.extract) {
       thumbnail = await StringUtils.extractThumbnail(param.content);
     }
 

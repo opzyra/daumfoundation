@@ -43,9 +43,7 @@ export class StringUtils {
         }
       }
 
-      return path
-        ?.replace(process.env.URL_CDN + '/', '')
-        .replace('#{CDN_URL}/', '');
+      return path?.replace(process.env.URL_CDN + '/', '#{CDN_URL}/');
     }
 
     return null;

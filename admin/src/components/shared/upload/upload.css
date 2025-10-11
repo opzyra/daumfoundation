@@ -151,6 +151,7 @@
 
 .sh-upload-files .ant-upload-wrapper .ant-upload-list {
   display: block;
+  margin-top: 8px;
 }
 
 .sh-upload-files .ant-upload-wrapper .ant-upload-select {
@@ -159,6 +160,7 @@
 
 .sh-upload-files .ant-upload-wrapper .ant-upload-list .ant-upload-list-item {
   height: 28px;
+  margin-top: 0;
 }
 
 .sh-upload-files .ant-upload-wrapper .ant-upload-list .ant-upload-list-item .ant-upload-list-item-name {

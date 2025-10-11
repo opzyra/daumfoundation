@@ -1,24 +1,54 @@
-import { ReactElement } from 'react';
+import { ReactElement, useEffect } from 'react';
 
 import { GetServerSideProps } from 'next';
 import Link from 'next/link';
 
 import { QueryClient, dehydrate } from '@tanstack/react-query';
+import dayjs from 'dayjs';
+import lodash from 'lodash';
 
 import { AppLayout } from 'src/components/layout/app-layout/app-layout';
 import Container from 'src/components/shared/container/container';
+import Html from 'src/components/ui/html/html';
+
+import parser from 'src/library/parser';
+import reader from 'src/library/reader';
+
+import * as articleService from 'src/service/article';
 
 import './news-detail.css';
 
-interface NewsDetailProps {}
+interface NewsDetailProps {
+  id: number;
+}
 
-export const getServerSideProps: GetServerSideProps<
-  NewsDetailProps
-> = async () => {
+export const getServerSideProps: GetServerSideProps<NewsDetailProps> = async (
+  context,
+) => {
   const queryClient = new QueryClient();
 
+  const params = parser.paramUrl(context.params);
+  const queryString = lodash.omitBy(
+    context.query,
+    (value, key) => params[key] === value,
+  );
+
+  const clientFindOneArticleQueryKey =
+    articleService.getClientFindOneArticleQueryKey(params.id);
+
+  await queryClient.prefetchQuery(clientFindOneArticleQueryKey, () =>
+    articleService.clientFindOneArticle(params.id),
+  );
+
+  const clientSurroundArticleQueryKey =
+    articleService.getClientSurroundArticleQueryKey(params.id);
+
+  await queryClient.prefetchQuery(clientSurroundArticleQueryKey, () =>
+    articleService.clientSurroundArticle(params.id),
+  );
+
   return {
-    props: { dehydratedState: dehydrate(queryClient) },
+    props: { dehydratedState: dehydrate(queryClient), ...params },
   };
 };
 
@@ -27,62 +57,50 @@ NewsDetail.getProvider = (page: ReactElement) => {
 };
 
 function NewsDetail(props: NewsDetailProps) {
+  const { data: article } = articleService.useClientFindOneArticle(props.id);
+  const { data: surround } = articleService.useClientSurroundArticle(props.id);
+
+  useEffect(() => {
+    articleService.clientHitArticle({ id: props.id });
+  }, []);
+
+  if (!article) return;
+
   return (
     <AppLayout metadata={{ gnb: 'news' }}>
       <div className="pg-news-detail">
         <Container>
           <div className="detail-head">
             <div className="head-label">PRISM:ON AIR</div>
-            <div className="head-subject">
-              &lt;2025 예강프리즘온: 경계선 지능 아동 및 양육자 지원&gt; 협약식
-              및 오리엔테이션을 진행했습니다!
+            <div className="head-subject">{article.subject}</div>
+            <div className="head-date">
+              {dayjs(article.createdAt).format('YYYY.MM.DD')}
             </div>
-            <div className="head-date">2025.10.02</div>
           </div>
           <div className="detail-contents">
             <div className="contents-inner">
-              <img src="/images/news-detail_sample.png" alt="" />
-              <p>
-                9월의 마지막 날, 다음세대재단과 예강희망키움재단이 새롭게 런칭한
-                협력사업
-                <br />
-                &lt;2025 예강프리즘온: 경계선 지능 아동 및 양육자 지원&gt;
-                협약식 및 오리엔테이션을 진행했습니다! 🤝🏻
-              </p>
-
-              <p>
-                ‘예강프리즘온’은 사회적 관심과 지원이 부족한 복지 사각지대를
-                발굴 및 지원하는 사업으로,
-                <br />
-                올해는 특히 경계선 지능 아동과 해당 가정에 초점을 맞췄습니다. ✨
-              </p>
-
-              <p>
-                이번 협약식에는 다음세대재단, 예강희망키움재단을 비롯해
-                서울특별시경계선지능인평생교육지원센터,
-                <br />
-                동대문·신월·염리·월계·유린원강종합사회복지관, 예룸예술학교,
-                함께하랑 사회적협동조합, 스프링미, 사단법인 위밋업
-                <br />총 12개 협력기관이 함께해주셨어요!
-              </p>
-
-              <p>
-                이어진 오리엔테이션에서는 앞으로 경계선 지능 아동 및 양육자를
-                만날 실무자들이 모여,
-                <br />
-                김성아 서울특별시경계선지능인평생교육지원센터장님의 강의를
-                들으며 대상에 대한 이해를 넓혔답니다.
-              </p>
-
-              <p>
-                다양한 협력기관들이 모인 만큼, 그 시너지가 기대되는
-                ‘예강프리즘온’ 사업의 첫걸음에 힘찬 응원 부탁드립니다!
-                <br />
-                ‘예강프리즘온’ 사업에 대한 자세한 내용은 추후 소개될 예정이니
-                많은 관심 부탁드려요. 🤗
-              </p>
+              <Html value={article.content} />
             </div>
           </div>
+          {article.upload?.length !== 0 && (
+            <div className="detail-upload">
+              <div className="upload-label">첨부파일</div>
+              <div className="upload-list">
+                {article.upload?.map((item) => (
+                  <a
+                    className="upload-item"
+                    key={item.id}
+                    onClick={async () => {
+                      reader.download(`/client/article/download/${item.id}`);
+                    }}
+                  >
+                    {item.fullname}
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+
           <div className="detail-nav">
             <div className="nav-item">
               <div className="nav-label">
@@ -100,7 +118,14 @@ function NewsDetail(props: NewsDetailProps) {
                   </svg>
                 </div>
               </div>
-              <div className="nav-link">이전글이 없습니다.</div>
+              {!surround?.prev && (
+                <div className="nav-link empty">이전글이 없습니다.</div>
+              )}
+              {surround?.prev && (
+                <Link className="nav-link" href={`/news/${surround.prev.id}`}>
+                  {surround.prev.subject}
+                </Link>
+              )}
             </div>
             <div className="nav-item">
               <div className="nav-label">
@@ -118,10 +143,14 @@ function NewsDetail(props: NewsDetailProps) {
                   </svg>
                 </div>
               </div>
-              <div className="nav-link">
-                &lt;2025 예강프리즘온: 경계선 지능 아동 및 양육자 지원&gt;
-                협약식 및 오리엔테이션을 진행했습니다!
-              </div>
+              {!surround?.next && (
+                <div className="nav-link empty">다음글이 없습니다.</div>
+              )}
+              {surround?.next && (
+                <Link className="nav-link" href={`/news/${surround.next.id}`}>
+                  {surround.next.subject}
+                </Link>
+              )}
             </div>
           </div>
           <div className="detail-action">

@@ -138,10 +138,6 @@ function Admin(props: AdminProps) {
                             label: '관리자',
                             value: 'master',
                           },
-                          {
-                            label: '매니저',
-                            value: 'manager',
-                          },
                         ]}
                       />
                     ),

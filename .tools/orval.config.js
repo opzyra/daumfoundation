@@ -11,7 +11,7 @@ module.exports = {
       prettier: true,
       override: {
         mutator: {
-          path: '../admin/src/lib/axios.ts',
+          path: '../admin/src/library/axios.ts',
           name: 'orvalInstance',
         },
         header: false,
@@ -22,15 +22,15 @@ module.exports = {
     input: 'http://localhost:4000/api-docs-json',
     output: {
       mode: 'tags',
-      target: '../client/src/service/api.ts',
-      schemas: '../client/src/service/model',
+      target: '../prism-on/src/service/api.ts',
+      schemas: '../prism-on/src/service/model',
       client: 'react-query',
       clean: true,
       tsconfig: false,
       prettier: true,
       override: {
         mutator: {
-          path: '../client/src/lib/axios.ts',
+          path: '../prism-on/src/library/axios.ts',
           name: 'orvalInstance',
         },
         header: false,

@@ -15,10 +15,14 @@ import { Request, Response } from 'express';
 
 import { ArticleBoardDto } from 'src/modules/article/dto/article.board.dto';
 import { ArticleDto } from 'src/modules/article/dto/article.dto';
-import { ArticleListClientDto } from 'src/modules/article/web/client/article.client.dto';
 import {
+  ArticleListClientDto,
+  ArticleSurroundClientDto,
+} from 'src/modules/article/web/client/article.client.dto';
+import {
+  ArticleFlattenClientParam,
   ArticleHitClientParam,
-  ArticleListClientParam,
+  ArticleLatestClientParam,
   ArticleSearchClientParam,
 } from 'src/modules/article/web/client/article.client.param';
 import { ArticleClientService } from 'src/modules/article/web/client/article.client.service';
@@ -45,6 +49,15 @@ export class ArticleClientController {
   @Get('board/:namekey')
   async findOneBoard(@Param('namekey') namekey: string) {
     return await this.articleClientService.findOneBoard(namekey);
+  }
+
+  @ApiOperation({
+    summary: '관리형 게시글 주변글',
+  })
+  @ApiOkResponse({ description: '성공', type: ArticleSurroundClientDto })
+  @Get('surround/:id')
+  async surround(@Param('id') id: number) {
+    return await this.articleClientService.surround(id);
   }
 
   @ApiOperation({
@@ -84,12 +97,21 @@ export class ArticleClientController {
   }
 
   @ApiOperation({
+    summary: '아티클 최신글 조회',
+  })
+  @ApiOkResponse({ description: '성공', isArray: true, type: ArticleDto })
+  @Get('latest')
+  async latest(@Query() param: ArticleLatestClientParam) {
+    return await this.articleClientService.latest(param);
+  }
+
+  @ApiOperation({
     summary: '아티클 전체 조회',
   })
   @ApiOkResponse({ description: '성공', isArray: true, type: ArticleDto })
-  @Get('list')
-  async list(@Query() param: ArticleListClientParam) {
-    return await this.articleClientService.list(param);
+  @Get('flatten')
+  async flatten(@Query() param: ArticleFlattenClientParam) {
+    return await this.articleClientService.flatten(param);
   }
 
   @ApiOperation({

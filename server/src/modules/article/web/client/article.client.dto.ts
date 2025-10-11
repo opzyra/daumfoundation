@@ -12,3 +12,11 @@ export class ArticleListClientDto extends PartialType(PaginateListDto) {
   })
   items: Array<ArticleDto>;
 }
+
+export class ArticleSurroundClientDto {
+  @ApiProperty({ description: '이전 게시글', type: ArticleDto })
+  prev: ArticleDto;
+
+  @ApiProperty({ description: '다음 게시글', type: ArticleDto })
+  next: ArticleDto;
+}

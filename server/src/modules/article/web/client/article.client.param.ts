@@ -1,11 +1,35 @@
 import { ApiProperty, PartialType } from '@nestjs/swagger';
 
-import { IsNotEmpty, IsOptional } from 'class-validator';
+import { Type } from 'class-transformer';
+import { IsInt, IsNotEmpty, IsOptional, Max } from 'class-validator';
 
 import { UrlValue } from 'src/common/decorator/transform.decorator';
 import { PaginateDto } from 'src/common/dto/paginate.dto';
 
-export class ArticleListClientParam {
+export class ArticleLatestClientParam {
+  @IsOptional()
+  @ApiProperty({
+    description: '게시판',
+    required: false,
+  })
+  board: string;
+
+  @IsOptional()
+  @ApiProperty({
+    description: '그룹',
+    required: false,
+  })
+  group: string;
+
+  @IsInt()
+  @Type(() => Number)
+  @Max(20)
+  @IsOptional()
+  @ApiProperty({ description: '최대 아이템 수' })
+  limit?: number;
+}
+
+export class ArticleFlattenClientParam {
   @IsOptional()
   @ApiProperty({
     description: '게시판',

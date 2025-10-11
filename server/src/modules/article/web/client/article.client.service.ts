@@ -26,8 +26,9 @@ import { ArticleBoardRepository } from 'src/modules/article/repository/article.b
 import { ArticleRepository } from 'src/modules/article/repository/article.repository';
 import { ArticleUploadRepository } from 'src/modules/article/repository/article.upload.repository';
 import {
+  ArticleFlattenClientParam,
   ArticleHitClientParam,
-  ArticleListClientParam,
+  ArticleLatestClientParam,
   ArticleSearchClientParam,
 } from 'src/modules/article/web/client/article.client.param';
 
@@ -240,7 +241,7 @@ export class ArticleClientService {
     });
   }
 
-  async list(param: ArticleListClientParam) {
+  async flatten(param: ArticleFlattenClientParam) {
     const board = await this.articleBoardRepository.findOne({
       where: { namekey: param.board },
     });
@@ -303,5 +304,108 @@ export class ArticleClientService {
     const items = await this.articleRepository.findAll(options);
 
     return items.map((item) => this.mapper.map(item, Article, ArticleDto));
+  }
+
+  async latest(param: ArticleLatestClientParam) {
+    const board = await this.articleBoardRepository.findOne({
+      where: { namekey: param.board },
+    });
+
+    if (!board || !board.latest) {
+      throw new BadRequestException('잘못된 접근입니다.');
+    }
+
+    const options: FindAndCountOptions<Article> = {};
+    const where: WhereOptions<Article>[] = [];
+
+    options.limit = param.limit || 20;
+
+    options.include = [
+      {
+        model: ArticleBoard,
+        as: 'board',
+        include: [
+          { model: ArticleGroup, as: 'group', attributes: ['namekey'] },
+        ],
+        attributes: ['namekey'],
+      },
+      { model: ArticleGroup, attributes: ['name'] },
+      {
+        model: ArticleUpload,
+        attributes: ['id'],
+      },
+      {
+        model: Admin,
+        attributes: ['id', 'username', 'name'],
+      },
+    ];
+
+    // secret
+    where.push({
+      secret: false,
+    });
+
+    // board
+    if (param.board) {
+      where.push({
+        boardKey: param.board,
+      });
+    }
+
+    // group
+    if (param.group) {
+      where.push({
+        groupKey: param.group,
+      });
+    }
+
+    options.where = {
+      [Op.and]: where,
+    };
+
+    const order: Order = [];
+    order.push(['notice', 'desc']);
+    order.push(['createdAt', 'desc']);
+
+    options.order = order;
+
+    const items = await this.articleRepository.findAll(options);
+
+    return items.map((item) => this.mapper.map(item, Article, ArticleDto));
+  }
+
+  async surround(id: number) {
+    const item = await this.articleRepository.findOne({
+      where: { id },
+    });
+
+    if (!item) {
+      throw new NotFoundException('존재하지 않는 리소스입니다.');
+    }
+
+    const [queryResult] = await this.sequelize.query(
+      `
+      (SELECT 'prev' as direction, created_at as createdAt, tb_article.* FROM tb_article WHERE created_at < :createdAt AND secret = false AND board_key = :boardKey ${
+        item.group ? 'AND group_key = :groupKey' : ''
+      } ORDER BY created_at DESC LIMIT 1)
+      UNION ALL
+      (SELECT 'next' as direction, created_at as createdAt, tb_article.* FROM tb_article WHERE created_at > :createdAt AND secret = false AND board_key = :boardKey ${
+        item.group ? 'AND group_key = :groupKey' : ''
+      } ORDER BY created_at ASC LIMIT 1)
+    `,
+      {
+        replacements: {
+          createdAt: item.createdAt,
+          boardKey: item.boardKey,
+          groupKey: item.groupKey,
+        },
+      },
+    );
+
+    return lodash
+      .chain(queryResult)
+      .groupBy((row: any) => (row.direction === 'prev' ? 'prev' : 'next'))
+      .mapValues((value) => lodash.head(value))
+      .value();
   }
 }

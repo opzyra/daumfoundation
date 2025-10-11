@@ -6,6 +6,7 @@ import Link from 'next/link';
 
 import { QueryClient, dehydrate } from '@tanstack/react-query';
 import cn from 'classnames';
+import dayjs from 'dayjs';
 import { useDevice } from 'src/hooks/use-device';
 import type { Swiper as SwiperClass } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -14,18 +15,32 @@ import { AppLayout } from 'src/components/layout/app-layout/app-layout';
 import Container from 'src/components/shared/container/container';
 import ButtonMore from 'src/components/ui/button-more/button-more';
 
+import * as articleService from 'src/service/article';
+
 import './main.css';
 
-interface MainProps {}
+interface MainProps {
+  clientLatestArticleParams: any;
+}
 
 export const getServerSideProps: GetServerSideProps<MainProps> = async (
   context,
 ) => {
   const queryClient = new QueryClient();
 
+  const clientLatestArticleParams = { board: 'prismon-news', limit: 6 };
+
+  let clientLatestArticleQueryKey =
+    articleService.getClientLatestArticleQueryKey(clientLatestArticleParams);
+
+  await queryClient.prefetchQuery(clientLatestArticleQueryKey, () =>
+    articleService.clientLatestArticle(clientLatestArticleParams),
+  );
+
   return {
     props: {
       dehydratedState: dehydrate(queryClient),
+      clientLatestArticleParams,
     },
   };
 };
@@ -42,6 +57,10 @@ function Main(props: MainProps) {
   const [slideEnd, setSlideEnd] = useState(false);
 
   const device = useDevice();
+
+  const { data: news } = articleService.useClientLatestArticle(
+    props.clientLatestArticleParams,
+  );
 
   // useInterval(() => {
   //   const el = logoPathRef.current;
@@ -269,96 +288,80 @@ function Main(props: MainProps) {
               예강프리즘온의 다채로운 소식을 만나보세요.
             </div>
             <div className="news-contents">
-              <div className="news-nav">
-                <div
-                  className={cn('nav-prev nav-item', {
-                    hide: slideBeginning,
-                  })}
-                  onClick={() => {
-                    swiper?.slidePrev();
-                  }}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="29"
-                    height="55"
-                    viewBox="0 0 29 55"
+              {news && news?.length > 3 && (
+                <div className="news-nav">
+                  <div
+                    className={cn('nav-prev nav-item', {
+                      hide: slideBeginning,
+                    })}
+                    onClick={() => {
+                      swiper?.slidePrev();
+                    }}
                   >
-                    <path
-                      d="M4.5,4.5,29.948,29.948,4.5,56.124"
-                      transform="translate(31.448 58.245) rotate(180)"
-                      fill="none"
-                      stroke="#b7b7b7"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="3"
-                    />
-                  </svg>
-                </div>
-                <div
-                  className={cn('nav-next nav-item', {
-                    hide: slideEnd,
-                  })}
-                  onClick={() => {
-                    swiper?.slideNext();
-                  }}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="29"
-                    height="55"
-                    viewBox="0 0 29 55"
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="29"
+                      height="55"
+                      viewBox="0 0 29 55"
+                    >
+                      <path
+                        d="M4.5,4.5,29.948,29.948,4.5,56.124"
+                        transform="translate(31.448 58.245) rotate(180)"
+                        fill="none"
+                        stroke="#b7b7b7"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="3"
+                      />
+                    </svg>
+                  </div>
+                  <div
+                    className={cn('nav-next nav-item', {
+                      hide: slideEnd,
+                    })}
+                    onClick={() => {
+                      swiper?.slideNext();
+                    }}
                   >
-                    <path
-                      d="M4.5,4.5,29.948,29.948,4.5,56.124"
-                      transform="translate(-2.379 -2.378)"
-                      fill="none"
-                      stroke="#b7b7b7"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="3"
-                    />
-                  </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="29"
+                      height="55"
+                      viewBox="0 0 29 55"
+                    >
+                      <path
+                        d="M4.5,4.5,29.948,29.948,4.5,56.124"
+                        transform="translate(-2.379 -2.378)"
+                        fill="none"
+                        stroke="#b7b7b7"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="3"
+                      />
+                    </svg>
+                  </div>
                 </div>
-              </div>
+              )}
+
               {device.portable && (
                 <div className="news-list">
-                  <Link className="news-item" href="/news/1">
-                    <div className="thumbnail">
-                      <img src="/images/news-sample.png" alt="샘플 이미지" />
-                    </div>
-                    <div className="content">
-                      <div className="content-title">
-                        아주 길게 만들어서 제목을 길게 입력하여 2줄로 만들면
-                        이렇게 처리됩니다.
+                  {news?.map((item) => (
+                    <Link
+                      className="news-item"
+                      href={`/news/${item.id}`}
+                      key={item.id}
+                    >
+                      <div className="thumbnail">
+                        <img src={item.thumbnail} alt={item.subject} />
                       </div>
-                      <div className="content-date">2025.10.03</div>
-                    </div>
-                  </Link>
-                  <Link className="news-item" href="/news/1">
-                    <div className="thumbnail">
-                      <img src="/images/news-sample.png" alt="샘플 이미지" />
-                    </div>
-                    <div className="content">
-                      <div className="content-title">
-                        아주 길게 만들어서 제목을 길게 입력하여 2줄로 만들면
-                        이렇게 처리됩니다.
+                      <div className="content">
+                        <div className="content-title">{item.subject}</div>
+                        <div className="content-date">
+                          {dayjs(item.createdAt).format('YYYY.MM.DD')}
+                        </div>
                       </div>
-                      <div className="content-date">2025.10.03</div>
-                    </div>
-                  </Link>
-                  <Link className="news-item" href="/news/1">
-                    <div className="thumbnail">
-                      <img src="/images/news-sample.png" alt="샘플 이미지" />
-                    </div>
-                    <div className="content">
-                      <div className="content-title">
-                        아주 길게 만들어서 제목을 길게 입력하여 2줄로 만들면
-                        이렇게 처리됩니다.
-                      </div>
-                      <div className="content-date">2025.10.03</div>
-                    </div>
-                  </Link>
+                    </Link>
+                  ))}
                 </div>
               )}
               {!device.portable && (
@@ -392,79 +395,43 @@ function Main(props: MainProps) {
                     },
                   }}
                 >
-                  <SwiperSlide>
-                    <Link className="news-item" href="/news/1">
-                      <div className="thumbnail">
-                        <img src="/images/news-sample.png" alt="샘플 이미지" />
-                      </div>
-                      <div className="content">
-                        <div className="content-title">
-                          아주 길게 만들어서 제목을 길게 입력하여 2줄로 만들면
-                          이렇게 처리됩니다.
+                  {news?.map((item) => (
+                    <SwiperSlide key={item.id}>
+                      <Link className="news-item" href={`/news/${item.id}`}>
+                        <div className="thumbnail">
+                          <img src={item.thumbnail} alt={item.subject} />
                         </div>
-                        <div className="content-date">2025.10.03</div>
-                      </div>
-                    </Link>
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <Link className="news-item" href="/news/1">
-                      <div className="thumbnail">
-                        <img src="/images/news-sample.png" alt="샘플 이미지" />
-                      </div>
-                      <div className="content">
-                        <div className="content-title">
-                          아주 길게 만들어서 제목을 길게 입력하여 2줄로 만들면
-                          이렇게 처리됩니다.
+                        <div className="content">
+                          <div className="content-title">{item.subject}</div>
+                          <div className="content-date">
+                            {dayjs(item.createdAt).format('YYYY.MM.DD')}
+                          </div>
                         </div>
-                        <div className="content-date">2025.10.03</div>
-                      </div>
-                    </Link>
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <Link className="news-item" href="/news/1">
-                      <div className="thumbnail">
-                        <img src="/images/news-sample.png" alt="샘플 이미지" />
-                      </div>
-                      <div className="content">
-                        <div className="content-title">
-                          아주 길게 만들어서 제목을 길게 입력하여 2줄로 만들면
-                          이렇게 처리됩니다.
-                        </div>
-                        <div className="content-date">2025.10.03</div>
-                      </div>
-                    </Link>
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <Link className="news-item" href="/news/1">
-                      <div className="thumbnail">
-                        <img src="/images/news-sample.png" alt="샘플 이미지" />
-                      </div>
-                      <div className="content">
-                        <div className="content-title">
-                          아주 길게 만들어서 제목을 길게 입력하여 2줄로 만들면
-                          이렇게 처리됩니다.
-                        </div>
-                        <div className="content-date">2025.10.03</div>
-                      </div>
-                    </Link>
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <Link className="news-item" href="/news/1">
-                      <div className="thumbnail">
-                        <img src="/images/news-sample.png" alt="샘플 이미지" />
-                      </div>
-                      <div className="content">
-                        <div className="content-title">
-                          아주 길게 만들어서 제목을 길게 입력하여 2줄로 만들면
-                          이렇게 처리됩니다.
-                        </div>
-                        <div className="content-date">2025.10.03</div>
-                      </div>
-                    </Link>
-                  </SwiperSlide>
+                      </Link>
+                    </SwiperSlide>
+                  ))}
                 </Swiper>
               )}
             </div>
+            {news?.length === 0 && (
+              <div className="news-empty">
+                <div className="empty-icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="1em"
+                    height="1em"
+                    viewBox="0 0 32 32"
+                  >
+                    <path
+                      fill="#d2d2d2"
+                      fill-rule="evenodd"
+                      d="m25.21 24.21l-12.471 3.718a.525.525 0 0 1-.667-.606l4.456-21.511a.43.43 0 0 1 .809-.094l8.249 17.661a.6.6 0 0 1-.376.832m2.139-.878L17.8 2.883A1.53 1.53 0 0 0 16.491 2a1.51 1.51 0 0 0-1.4.729L4.736 19.648a1.59 1.59 0 0 0 .018 1.7l5.064 7.909a1.63 1.63 0 0 0 1.83.678l14.7-4.383a1.6 1.6 0 0 0 1-2.218Z"
+                    />
+                  </svg>
+                </div>
+                <div className="empty-text">등록된 소식이 없습니다.</div>
+              </div>
+            )}
             <div className="news-more">
               <Link href="/news">
                 <ButtonMore />

@@ -1,4 +1,4 @@
-export type ClientListArticleParams = {
+export type ClientFlattenArticleParams = {
   /**
    * 게시판
    */

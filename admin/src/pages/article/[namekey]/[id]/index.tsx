@@ -186,14 +186,14 @@ function ArticleDetail(props: ArticleDetailProps) {
                     </svg>
                     링크 복사
                   </div>
-                  */}
+
                 <a
                   className="action-item"
-                  // href={`${process.env.NEXT_PUBLIC_URL_CLIENT}/article/${board?.namekey}/${article.id}`}
-                  // target="_blank"
+                  href={`${process.env.NEXT_PUBLIC_URL_CLIENT}/article/${board?.namekey}/${article.id}`}
+                  target="_blank"
                   rel="noreferrer"
                   onClick={() => {
-                    toastr.error({ content: '모바일에서 확인해주세요.' });
+
                   }}
                 >
                   <svg
@@ -209,6 +209,7 @@ function ArticleDetail(props: ArticleDetailProps) {
                   </svg>
                   게시글 확인
                 </a>
+                */}
               </div>
             </div>
           </div>

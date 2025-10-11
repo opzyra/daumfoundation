@@ -1,6 +1,6 @@
 export interface ArticleUploadDto {
   /** PK */
-  id: string;
+  id: number;
   /** 미디어 타입 */
   mimetype: string;
   /** 파일명 */

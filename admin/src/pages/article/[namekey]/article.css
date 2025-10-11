@@ -5,11 +5,27 @@
 }
 
 .pg-article .article-source .source-subject {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.pg-article .article-source .source-subject .subject-text {
-  display: inline-block;
+.pg-article .article-source .source-subject .subject-thumbnail {
+  width: 120px;
+  border-radius: var(--radius);
+  flex-shrink: 0;
+  height: 65px;
+  position: relative;
+  overflow: hidden;
+}
+
+.pg-article .article-source .source-subject .subject-thumbnail img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  border-radius: var(--radius);
 }
 
 .pg-article .article-source .source-subject .subject-icon {

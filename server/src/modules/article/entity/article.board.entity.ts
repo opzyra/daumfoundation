@@ -27,6 +27,10 @@ export class ArticleBoard extends Model {
   flatten: boolean;
 
   @AutoMap()
+  @Column({ defaultValue: false, comment: '최신글 사용 여부' })
+  latest: boolean;
+
+  @AutoMap()
   @Column({ defaultValue: false, comment: '썸네일 사용 여부' })
   thumbnail: boolean;
 
