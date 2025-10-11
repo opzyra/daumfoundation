@@ -215,8 +215,7 @@
   }
 
   .app-layout .layout-main {
-    /*padding-top: 65px;*/
-    transform: translateY(65px);
+    transform: translateY(0px);
   }
 
   .app-layout .layout-footer {

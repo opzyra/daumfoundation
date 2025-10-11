@@ -890,14 +890,14 @@
   }
 
   .pg-main .main-cover img {
-    top: -40px;
+    top: -20px;
     left: -120px;
     width: 560px;
     height: 820px;
   }
 
   .pg-main .main-cover .cover-prism {
-    top: -40px;
+    top: -20px;
     left: 22px;
     width: 518px;
     height: 382px;
@@ -961,7 +961,7 @@
   }
 
   .pg-main .main-news {
-    padding: 100px 0;
+    padding: 100px 0 140px;
   }
 
   .pg-main .main-news .news-label {
