@@ -49,7 +49,10 @@ export class ExceptionFilter implements NestExceptionFilter {
       request?.clientIp || requestIp.getClientIp(request)
     },${String(error).replace(',', '')}`;
 
-    this.logger.error(message, stack);
+    if (process.env.NODE_ENV === 'development') {
+      this.logger.error(message, stack);
+    }
+
     this.winston.error(message, stack);
 
     response.status(status).json({
