@@ -15,6 +15,14 @@
   z-index: -1;
 }
 
+.pg-intro .intro-cover img.desktop {
+  display: block;
+}
+
+.pg-intro .intro-cover img.mobile {
+  display: none;
+}
+
 .pg-intro .intro-logo {
   display: flex;
   align-items: center;
@@ -395,5 +403,180 @@
     margin-top: 20px;
     font-size: 16px;
     line-height: 1.5;
+  }
+}
+
+@media (max-width: 1024px) {
+  .pg-intro .intro-cover img {
+    min-width: 1024px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .pg-intro .intro-logo .logo-phrase {
+    font-size: 30px;
+  }
+
+  .pg-intro .intro-logo .logo-image {
+    width: 480px;
+  }
+
+  .pg-intro .intro-logo .logo-image .logo-path.animate .path-item:nth-of-type(1) {
+    top: 0;
+    right: 54px;
+  }
+
+  .pg-intro .intro-logo .logo-image .logo-path.animate .path-item:nth-of-type(2) {
+    top: -8px;
+    right: 38px;
+  }
+
+  .pg-intro .intro-logo .logo-image .logo-path.animate .path-item:nth-of-type(3) {
+    top: 0;
+    right: 20px;
+  }
+
+  .pg-intro .intro-description {
+    font-size: 20px;
+    margin-top: 24px;
+    line-height: 34px;
+  }
+
+  .pg-intro .intro-host {
+    margin-top: 60px;
+  }
+
+  .pg-intro .intro-host .host-list {
+    flex-direction: column;
+  }
+
+  .pg-intro .intro-host .host-list .host-item {
+    width: 60%;
+    padding: 40px 0;
+    min-height: auto;
+  }
+
+  .pg-intro .intro-value {
+    margin-top: 80px;
+    padding-bottom: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .pg-intro .intro-host .host-list .host-item {
+    width: 85%;
+  }
+
+  .pg-intro .intro-host .host-list .host-item.yegangfoundation .host-logo svg {
+    width: 180px;
+  }
+
+  .pg-intro .intro-host .host-list .host-item.daumfoundation .host-logo svg {
+    width: 180px;
+  }
+}
+
+@media (max-width: 576px) {
+  .pg-intro {
+    padding-top: 240px;
+    overflow: hidden;
+  }
+
+  .pg-intro .intro-cover img.desktop {
+    display: none;
+  }
+
+  .pg-intro .intro-cover img.mobile {
+    display: block;
+  }
+
+  .pg-intro .intro-cover img {
+    min-width: 576px;
+  }
+
+  .pg-intro .intro-logo {
+  }
+
+  .pg-intro .intro-logo .logo-phrase {
+    font-size: 24px;
+  }
+
+  .pg-intro .intro-logo .logo-image {
+    width: 340px;
+  }
+
+  .pg-intro .intro-logo .logo-phrase .phrase-description {
+    width: calc(100% + 40px);
+    transform: translateX(-20px);
+    font-size: 16px;
+    margin-top: 30px;
+  }
+
+  .pg-intro .intro-logo .logo-image .logo-path .path-item {
+    width: 6px;
+    height: 20px;
+  }
+
+  .pg-intro .intro-logo .logo-image .logo-path.animate .path-item:nth-of-type(1) {
+    top: 0;
+    right: 40px;
+  }
+
+  .pg-intro .intro-logo .logo-image .logo-path.animate .path-item:nth-of-type(2) {
+    top: -4px;
+    right: 28px;
+  }
+
+  .pg-intro .intro-logo .logo-image .logo-path.animate .path-item:nth-of-type(3) {
+    top: 0;
+    right: 16px;
+  }
+
+  .pg-intro .intro-description {
+    margin-top: 30px;
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .pg-intro .intro-host {
+    margin-top: 100px;
+  }
+
+  .pg-intro .intro-host .host-list {
+    gap: 34px;
+  }
+
+  .pg-intro .intro-host .host-list .host-item {
+    width: 100%;
+    border-radius: 20px;
+    padding: 42px 24px;
+  }
+
+  .pg-intro .intro-host .host-list .host-item::before {
+    border-radius: 20px;
+  }
+
+  .pg-intro .intro-host .host-list .host-item.yegangfoundation .host-logo svg {
+    width: 130px;
+  }
+
+  .pg-intro .intro-host .host-list .host-item.daumfoundation .host-logo svg {
+    width: 144px;
+  }
+
+  .pg-intro .intro-host .host-list .host-item .host-text {
+    line-height: 26px;
+  }
+
+  .pg-intro .intro-value .value-title {
+    font-size: 30px;
+  }
+
+  .pg-intro .intro-value .value-text {
+    margin-top: 24px;
+  }
+
+  .pg-intro .intro-value {
+    padding-bottom: 70px;
   }
 }
