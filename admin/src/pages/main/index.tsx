@@ -17,10 +17,17 @@ export const getServerSideProps: GetServerSideProps<MainProps> = async (
   const queryClient = new QueryClient();
 
   return {
-    props: {
-      dehydratedState: dehydrate(queryClient),
+    redirect: {
+      destination: '/article/prismon-news',
+      permanent: false,
     },
   };
+
+  // return {
+  //   props: {
+  //     dehydratedState: dehydrate(queryClient),
+  //   },
+  // };
 };
 
 Main.getProvider = (page: ReactElement) => {
